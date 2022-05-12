@@ -37,11 +37,11 @@ class ArtmathController extends AbstractController
     {
         // Redirige vers /artmath si on va sur le site sans
         //  indiquer le nom de la route
-        return $this->redirectToRoute('app_artmath');
+        return $this->render('artmath/index.html.twig');
     }
 
     /**
-     * @Route("/artmath", name="app_artmath")
+     * @Route("/koch", name="app_koch")
      */
     public function index(): Response
     {
@@ -49,7 +49,12 @@ class ArtmathController extends AbstractController
             'fichier' => '',
         ]);
     }
-
+    
+    public function create_pyprocess():
+    {
+        $args = func_get_args();
+        
+    }
     /**
      * @Route("/calculer", name="calculer")
      */
