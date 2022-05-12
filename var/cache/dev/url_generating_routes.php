@@ -4,8 +4,8 @@
 
 return [
     'racine' => [[], ['_controller' => 'App\\Controller\\ArtmathController::racine'], [], [['text', '/']], [], [], []],
-    'app_artmath' => [[], ['_controller' => 'App\\Controller\\ArtmathController::index'], [], [['text', '/artmath']], [], [], []],
-    'calculer' => [[], ['_controller' => 'App\\Controller\\ArtmathController::calculer'], [], [['text', '/calculer']], [], [], []],
+    'app_koch' => [[], ['_controller' => 'App\\Controller\\ArtmathController::koch'], [], [['text', '/koch']], [], [], []],
+    'calculer_koch' => [[], ['_controller' => 'App\\Controller\\ArtmathController::calculer_koch'], [], [['text', '/calculer_koch']], [], [], []],
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
     '_wdt' => [['token'], ['_controller' => 'web_profiler.controller.profiler::toolbarAction'], [], [['variable', '/', '[^/]++', 'token', true], ['text', '/_wdt']], [], [], []],
     '_profiler_home' => [[], ['_controller' => 'web_profiler.controller.profiler::homeAction'], [], [['text', '/_profiler/']], [], [], []],

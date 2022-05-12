@@ -9,8 +9,8 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/' => [[['_route' => 'racine', '_controller' => 'App\\Controller\\ArtmathController::racine'], null, null, null, false, false, null]],
-        '/artmath' => [[['_route' => 'app_artmath', '_controller' => 'App\\Controller\\ArtmathController::index'], null, null, null, false, false, null]],
-        '/calculer' => [[['_route' => 'calculer', '_controller' => 'App\\Controller\\ArtmathController::calculer'], null, null, null, false, false, null]],
+        '/koch' => [[['_route' => 'app_koch', '_controller' => 'App\\Controller\\ArtmathController::koch'], null, null, null, false, false, null]],
+        '/calculer_koch' => [[['_route' => 'calculer_koch', '_controller' => 'App\\Controller\\ArtmathController::calculer_koch'], null, null, null, false, false, null]],
         '/_profiler' => [[['_route' => '_profiler_home', '_controller' => 'web_profiler.controller.profiler::homeAction'], null, null, null, true, false, null]],
         '/_profiler/search' => [[['_route' => '_profiler_search', '_controller' => 'web_profiler.controller.profiler::searchAction'], null, null, null, false, false, null]],
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
