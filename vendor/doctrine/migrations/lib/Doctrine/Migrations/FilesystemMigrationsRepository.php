@@ -23,17 +23,20 @@ use function class_exists;
  */
 class FilesystemMigrationsRepository implements MigrationsRepository
 {
-    private bool $migrationsLoaded = false;
+    /** @var bool */
+    private $migrationsLoaded = false;
 
     /** @var array<string, string> */
-    private array $migrationDirectories;
+    private $migrationDirectories;
 
-    private MigrationFinder $migrationFinder;
+    /** @var MigrationFinder */
+    private $migrationFinder;
 
-    private MigrationFactory $versionFactory;
+    /** @var MigrationFactory */
+    private $versionFactory;
 
     /** @var AvailableMigration[] */
-    private array $migrations = [];
+    private $migrations = [];
 
     /**
      * @param string[]              $classes

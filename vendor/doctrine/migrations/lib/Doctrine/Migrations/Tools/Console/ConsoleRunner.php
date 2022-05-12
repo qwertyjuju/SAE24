@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Doctrine\Migrations\Tools\Console;
 
 use Composer\InstalledVersions;
+use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
+use Doctrine\Migrations\Configuration\Connection\ExistingConnection;
 use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
 use Doctrine\Migrations\Configuration\Migration\ConfigurationFileWithFallback;
 use Doctrine\Migrations\DependencyFactory;
@@ -148,6 +150,13 @@ class ConsoleRunner
             return DependencyFactory::fromEntityManager(
                 $configurations,
                 new ExistingEntityManager($dependencyFactory->get('em')->getEntityManager())
+            );
+        }
+
+        if ($dependencyFactory->has('db') && $dependencyFactory->get('db') instanceof ConnectionHelper) {
+            return DependencyFactory::fromConnection(
+                $configurations,
+                new ExistingConnection($dependencyFactory->get('db')->getConnection())
             );
         }
 

@@ -16,10 +16,11 @@ use function reset;
  */
 final class MigrationPlanList implements Countable
 {
-    private string $direction;
+    /** @var string */
+    private $direction;
 
     /** @var MigrationPlan[] */
-    private array $items = [];
+    private $items = [];
 
     /**
      * @param MigrationPlan[] $items

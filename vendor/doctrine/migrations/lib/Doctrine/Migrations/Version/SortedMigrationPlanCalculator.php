@@ -31,11 +31,14 @@ use function uasort;
  */
 final class SortedMigrationPlanCalculator implements MigrationPlanCalculator
 {
-    private MigrationsRepository $migrationRepository;
+    /** @var MigrationsRepository */
+    private $migrationRepository;
 
-    private MetadataStorage $metadataStorage;
+    /** @var MetadataStorage */
+    private $metadataStorage;
 
-    private Comparator $sorter;
+    /** @var Comparator */
+    private $sorter;
 
     public function __construct(
         MigrationsRepository $migrationRepository,

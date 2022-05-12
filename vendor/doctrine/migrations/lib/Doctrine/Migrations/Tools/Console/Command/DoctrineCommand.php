@@ -25,7 +25,8 @@ use function is_string;
  */
 abstract class DoctrineCommand extends Command
 {
-    private ?DependencyFactory $dependencyFactory = null;
+    /** @var DependencyFactory|null */
+    private $dependencyFactory;
 
     /** @var StyleInterface */
     protected $io;

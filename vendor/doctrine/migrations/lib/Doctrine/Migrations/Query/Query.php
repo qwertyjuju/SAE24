@@ -13,13 +13,14 @@ use function count;
  */
 final class Query
 {
-    private string $statement;
+    /** @var string */
+    private $statement;
 
     /** @var mixed[] */
-    private array $parameters;
+    private $parameters;
 
     /** @var mixed[] */
-    private array $types;
+    private $types;
 
     /**
      * @param mixed[] $parameters

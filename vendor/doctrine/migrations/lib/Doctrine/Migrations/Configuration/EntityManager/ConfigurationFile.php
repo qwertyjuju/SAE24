@@ -16,7 +16,8 @@ use function file_exists;
  */
 final class ConfigurationFile implements EntityManagerLoader
 {
-    private string $filename;
+    /** @var string */
+    private $filename;
 
     public function __construct(string $filename)
     {

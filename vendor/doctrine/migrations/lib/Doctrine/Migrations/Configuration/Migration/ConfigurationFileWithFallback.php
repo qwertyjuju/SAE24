@@ -18,7 +18,8 @@ use function file_exists;
  */
 final class ConfigurationFileWithFallback implements ConfigurationLoader
 {
-    private ?string $file = null;
+    /** @var string|null */
+    private $file;
 
     public function __construct(?string $file = null)
     {

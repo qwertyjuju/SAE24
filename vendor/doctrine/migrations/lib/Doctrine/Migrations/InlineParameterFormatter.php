@@ -23,7 +23,8 @@ use function sprintf;
  */
 final class InlineParameterFormatter implements ParameterFormatter
 {
-    private Connection $connection;
+    /** @var Connection */
+    private $connection;
 
     public function __construct(Connection $connection)
     {

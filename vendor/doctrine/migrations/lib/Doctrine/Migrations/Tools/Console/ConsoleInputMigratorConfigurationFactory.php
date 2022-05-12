@@ -10,7 +10,8 @@ use Symfony\Component\Console\Input\InputInterface;
 
 class ConsoleInputMigratorConfigurationFactory implements MigratorConfigurationFactory
 {
-    private Configuration $configuration;
+    /** @var Configuration */
+    private $configuration;
 
     public function __construct(Configuration $configuration)
     {

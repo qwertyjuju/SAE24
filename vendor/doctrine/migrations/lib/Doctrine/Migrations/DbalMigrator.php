@@ -27,15 +27,20 @@ use const COUNT_RECURSIVE;
  */
 class DbalMigrator implements Migrator
 {
-    private Stopwatch $stopwatch;
+    /** @var Stopwatch */
+    private $stopwatch;
 
-    private LoggerInterface $logger;
+    /** @var LoggerInterface */
+    private $logger;
 
-    private Executor $executor;
+    /** @var Executor */
+    private $executor;
 
-    private Connection $connection;
+    /** @var Connection */
+    private $connection;
 
-    private EventDispatcher $dispatcher;
+    /** @var EventDispatcher */
+    private $dispatcher;
 
     public function __construct(
         Connection $connection,

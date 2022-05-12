@@ -19,9 +19,11 @@ use Doctrine\Migrations\Metadata\MigrationPlanList;
  */
 final class EventDispatcher
 {
-    private EventManager $eventManager;
+    /** @var EventManager */
+    private $eventManager;
 
-    private Connection $connection;
+    /** @var Connection */
+    private $connection;
 
     public function __construct(Connection $connection, EventManager $eventManager)
     {

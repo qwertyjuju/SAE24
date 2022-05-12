@@ -21,32 +21,43 @@ final class Configuration
     public const VERSIONS_ORGANIZATION_BY_YEAR_AND_MONTH = 'year_and_month';
 
     /** @var array<string, string> */
-    private array $migrationsDirectories = [];
+    private $migrationsDirectories = [];
 
     /** @var string[] */
-    private array $migrationClasses = [];
+    private $migrationClasses = [];
 
-    private bool $migrationsAreOrganizedByYear = false;
+    /** @var bool */
+    private $migrationsAreOrganizedByYear = false;
 
-    private bool $migrationsAreOrganizedByYearAndMonth = false;
+    /** @var bool */
+    private $migrationsAreOrganizedByYearAndMonth = false;
 
-    private ?string $customTemplate = null;
+    /** @var string|null */
+    private $customTemplate;
 
-    private bool $isDryRun = false;
+    /** @var bool */
+    private $isDryRun = false;
 
-    private bool $allOrNothing = false;
+    /** @var bool */
+    private $allOrNothing = false;
 
-    private bool $transactional = true;
+    /** @var bool */
+    private $transactional = true;
 
-    private ?string $connectionName = null;
+    /** @var string|null */
+    private $connectionName;
 
-    private ?string $entityManagerName = null;
+    /** @var string|null */
+    private $entityManagerName;
 
-    private bool $checkDbPlatform = true;
+    /** @var bool */
+    private $checkDbPlatform = true;
 
-    private ?MetadataStorageConfiguration $metadataStorageConfiguration = null;
+    /** @var MetadataStorageConfiguration */
+    private $metadataStorageConfiguration;
 
-    private bool $frozen = false;
+    /** @var bool */
+    private $frozen = false;
 
     public function freeze(): void
     {

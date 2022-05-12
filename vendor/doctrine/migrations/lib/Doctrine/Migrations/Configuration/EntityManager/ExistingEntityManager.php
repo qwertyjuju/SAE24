@@ -9,7 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class ExistingEntityManager implements EntityManagerLoader
 {
-    private EntityManagerInterface $entityManager;
+    /** @var EntityManagerInterface */
+    private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
