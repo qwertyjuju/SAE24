@@ -84,7 +84,7 @@ class ArtmathController extends AbstractController
         }
     }
 
-        /**
+    /**
      * @Route("/calculer_nee_carre ", name="calculer_nee_carre")
      */
     public function calculer_nee_carre(Request $request): Response
