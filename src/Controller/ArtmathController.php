@@ -49,6 +49,16 @@ class ArtmathController extends AbstractController
             'fichier' => '',
         ]);
     }
+    
+    /**
+     * @Route("/nee_carre", name="app_nee_carre")
+     */
+    public function nee_carre(): Response
+    {
+        return $this->render('artmath/nee_carre.html.twig', [
+            'fichier' => '',
+        ]);
+    }
 
     /**
      * @Route("/calculer_koch", name="calculer_koch")
@@ -61,6 +71,33 @@ class ArtmathController extends AbstractController
         $calculer  = $request -> request -> get("calculer");
         $imprimer  = $request -> request -> get("imprimer");    
         $out = $this->create_pyprocess("koch.py", $dimension);
+        // A t'on appuyé sur calculer ?
+        if ($calculer!=NULL)
+            return $this->render('artmath/koch.html.twig', [
+                'fichier' => $out,
+            ]);
+        else {
+            // On a appuyé sur imprimer
+            return $this->render('artmath/imprimer.html.twig', [
+                'fichier' => $out,
+            ]);
+        }
+    }
+
+        /**
+     * @Route("/calculer_nee_carre ", name="calculer_nee_carre")
+     */
+    public function calculer_nee_carre(Request $request): Response
+    {
+        // Récupère les paramètres issus du formulaire (on indique le champ name)
+        $amp_hasard = $request -> request -> get("amp_hasard") ;
+        $amp_rot = $request -> request -> get("amp_rot") ;
+        $nb_col = $request -> request -> get("nb_col") ;
+        $nb_lignes = $request -> request -> get("nb_lignes") ;
+        // Pour les boutons : si appui contenu champ value sinon NULL
+        $calculer  = $request -> request -> get("calculer");
+        $imprimer  = $request -> request -> get("imprimer");    
+        $out = $this->create_pyprocess("nee_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->render('artmath/koch.html.twig', [
