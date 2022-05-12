@@ -26,7 +26,7 @@ use Symfony\Component\Process\Process;
 
 // Pour renvoyer un fichier directement
 use Symfony\Component\HttpFoundation\File\File;
-
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class ArtmathController extends AbstractController
 {
