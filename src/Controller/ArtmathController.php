@@ -100,7 +100,7 @@ class ArtmathController extends AbstractController
         $out = $this->create_pyprocess("nees_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
-            return $this->render('artmath/koch.html.twig', [
+            return $this->render('artmath/nee_carre.html.twig', [
                 'fichier' => $out,
             ]);
         else {
