@@ -74,10 +74,10 @@ class ArtmathController extends AbstractController
         }
     }
 
-    public function create_pyprocess(){
-        $args = func_get_args();
+    public function create_pyprocess(...$args){
+        dump(array_slice($args, 1));
         // Appelle le script Python passer en premier argument qui se trouve dans le répertoire /public
-        $process = new Process(['python3',$args[0],array_slice($args, 1)]);
+        $process = new Process(['python3',$args[0], ...array_slice($args, 1)]);
         $process -> run();
         // Récupère la valeur de retour renvoyé par le script python
         $output=$process->getOutput();
