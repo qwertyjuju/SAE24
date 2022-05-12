@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '49f8f658616dbae4c97c14da4c9192f7dbe07b5b',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '49f8f658616dbae4c97c14da4c9192f7dbe07b5b',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -65,12 +65,12 @@
             'dev_requirement' => false,
         ),
         'doctrine/deprecations' => array(
-            'pretty_version' => 'v0.5.3',
-            'version' => '0.5.3.0',
+            'pretty_version' => 'v1.0.0',
+            'version' => '1.0.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/deprecations',
             'aliases' => array(),
-            'reference' => '9504165960a1f83cc1480e2be1dd0a0478561314',
+            'reference' => '0e2a4f1f8cdfc7a92ec3b01c9334898c806b30de',
             'dev_requirement' => false,
         ),
         'doctrine/doctrine-bundle' => array(
@@ -128,12 +128,12 @@
             'dev_requirement' => false,
         ),
         'doctrine/migrations' => array(
-            'pretty_version' => '3.4.2',
-            'version' => '3.4.2.0',
+            'pretty_version' => '3.5.1',
+            'version' => '3.5.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/migrations',
             'aliases' => array(),
-            'reference' => 'f9b4c8032276460afd9dfa62fb215734b4380d90',
+            'reference' => 'c0a01ddead0ccaf0282f3f4fcaa026d11918a481',
             'dev_requirement' => false,
         ),
         'doctrine/orm' => array(
@@ -182,30 +182,12 @@
             'dev_requirement' => false,
         ),
         'laminas/laminas-code' => array(
-            'pretty_version' => '3.4.1',
-            'version' => '3.4.1.0',
+            'pretty_version' => '4.5.1',
+            'version' => '4.5.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-code',
             'aliases' => array(),
-            'reference' => '1cb8f203389ab1482bf89c0e70a04849bacd7766',
-            'dev_requirement' => false,
-        ),
-        'laminas/laminas-eventmanager' => array(
-            'pretty_version' => '3.4.0',
-            'version' => '3.4.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../laminas/laminas-eventmanager',
-            'aliases' => array(),
-            'reference' => 'a93fd278c97b2d41ebbce5ba048a24e3e6f580ba',
-            'dev_requirement' => false,
-        ),
-        'laminas/laminas-zendframework-bridge' => array(
-            'pretty_version' => '1.4.1',
-            'version' => '1.4.1.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../laminas/laminas-zendframework-bridge',
-            'aliases' => array(),
-            'reference' => '88bf037259869891afce6504cacc4f8a07b24d0f',
+            'reference' => '6fd96d4d913571a2cd056a27b123fa28cb90ac4e',
             'dev_requirement' => false,
         ),
         'monolog/monolog' => array(
@@ -386,12 +368,12 @@
             ),
         ),
         'psr/container' => array(
-            'pretty_version' => '1.1.1',
-            'version' => '1.1.1.0',
+            'pretty_version' => '1.1.2',
+            'version' => '1.1.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/container',
             'aliases' => array(),
-            'reference' => '8622567409010282b7aeebe4bb841fe98b58dcaf',
+            'reference' => '513e0666f7216c7459170d56df27dfcefe1689ea',
             'dev_requirement' => false,
         ),
         'psr/container-implementation' => array(
@@ -1315,12 +1297,6 @@
             'aliases' => array(),
             'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
             'dev_requirement' => false,
-        ),
-        'zendframework/zend-code' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '3.4.1',
-            ),
         ),
     ),
 );
