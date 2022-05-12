@@ -97,7 +97,7 @@ class ArtmathController extends AbstractController
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
         $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("nee_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes);
+        $out = $this->create_pyprocess("nees_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->render('artmath/koch.html.twig', [
