@@ -35,7 +35,7 @@ nbcolonnes=int(sys.argv[3])
 nblignes=int(sys.argv[4])
 
 # Paramètres figés dans le programme
-taille=80 # Taille d'un carré
+taille=200 # Taille d'un carré
 rempli=1 # Remplissage du carré
 
 # Taille de la zone pour dessiner
@@ -46,7 +46,7 @@ haut=taille*(nblignes+2)
 pygame.init()
 
 # Crée un surface blanche où dessiner
-screen = pygame.surface.Surface((1920,1080))
+screen = pygame.surface.Surface((larg,haut))
 pygame.draw.rect(screen,(255,255,255),(0,0,larg,haut))
 #screen.fill((124,125,125))
 
