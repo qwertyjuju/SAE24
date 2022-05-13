@@ -73,7 +73,7 @@ for i in range(nbcolonnes):
          y3=y0-sqrt(2)/2*taille*sin(angle)
          x4=x0+sqrt(2)/2*taille*sin(angle)
          y4=y0-sqrt(2)/2*taille*cos(angle)
-         couleur = couleurs[random.choice(couleurs.keys())]
+         couleur = couleurs[random.choice(list(couleurs.keys()))]
          pygame.draw.polygon(screen,(0,0,0),((x1,y1),(x2,y2),(x3,y3),(x4,y4)),rempli)
 
 # Enregistre la figure
