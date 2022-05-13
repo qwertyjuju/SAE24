@@ -31,7 +31,10 @@ couleurs = {
     "vert": (0,128,0),
     "rouge": (255, 0, 0),
     "rose": (255, 102, 204),
-    "bleu": (51, 51, 255)
+    "bleu": (51, 51, 255),
+    "orange": (255, 102, 0),
+    "jaune": (255, 255, 0),
+    "marron": (153, 102, 51)
 }
 # Récupère les paramètres
 # Premier paramètre : amplitude du hasard
