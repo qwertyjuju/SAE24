@@ -24,6 +24,15 @@ from math import *	# Importe toutes les fonctions de math (cos, ...)
 import random		# Pour tirer des nombres au hasard
 import pygame		# Pour les graphismes
 
+
+#Dictionnaire de couleurs
+couleurs = {
+    "noir": (0,0,0),
+    "vert": (0,128,0),
+    "rouge": (255, 0, 0),
+    "rose": (255, 102, 204),
+    "bleu": (51, 51, 255)
+}
 # Récupère les paramètres
 # Premier paramètre : amplitude du hasard
 # replace permet de transformer 5,4 en 5.4 car python attend un . pour les flottants
@@ -64,6 +73,7 @@ for i in range(nbcolonnes):
          y3=y0-sqrt(2)/2*taille*sin(angle)
          x4=x0+sqrt(2)/2*taille*sin(angle)
          y4=y0-sqrt(2)/2*taille*cos(angle)
+         couleur = couleurs[random.choice(couleurs.keys())]
          pygame.draw.polygon(screen,(0,0,0),((x1,y1),(x2,y2),(x3,y3),(x4,y4)),rempli)
 
 # Enregistre la figure
