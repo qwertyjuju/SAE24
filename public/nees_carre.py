@@ -46,7 +46,7 @@ haut=taille*(nblignes+2)
 pygame.init()
 
 # Crée un surface blanche où dessiner
-screen = pygame.surface.Surface((larg,haut))
+screen = pygame.surface.Surface((1920,1080))
 pygame.draw.rect(screen,(255,255,255),(0,0,larg,haut))
 #screen.fill((124,125,125))
 
