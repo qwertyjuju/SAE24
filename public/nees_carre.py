@@ -44,7 +44,7 @@ nbcolonnes=int(sys.argv[3])
 nblignes=int(sys.argv[4])
 
 # Paramètres figés dans le programme
-taille=200 # Taille d'un carré
+taille=50 # Taille d'un carré
 rempli=50 # Remplissage du carré
 
 # Taille de la zone pour dessiner
