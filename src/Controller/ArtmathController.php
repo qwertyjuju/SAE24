@@ -168,7 +168,7 @@ class ArtmathController extends AbstractController
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
         $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("nees_carre.py", $taille, $remplissage, $nb_carre, $decalage);
+        $out = $this->create_pyprocess("suite_carres.py", $taille, $remplissage, $nb_carre, $decalage);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->redirectToRoute('app_nee_carre', [
