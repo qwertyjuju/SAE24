@@ -49,7 +49,7 @@ fig=plt.figure()
 motif(fig,dimension,0,0,1,0)
 
 # Enregistre la figure
-fichier='reponse.svg'
+fichier='koch.svg'
 fig.savefig(fichier)
 # Ecrit le nom du fichier pour celui qui appelle ce programme
 print (fichier)

@@ -77,6 +77,25 @@ class ArtmathController extends AbstractController
     }
 
     /**
+     * @Route("/suite_carre", name="app_suite_carre")
+     */
+    public function suite_carre(Request $request): Response
+    {
+        $fichier = $request->query->get('fichier');
+        $nb_carres = $request -> query -> get("nb_carres") ;
+        $decalage = $request -> query -> get("decalage") ;
+        $taille = $request -> query -> get("taille");
+        $remplissage = $request -> query -> get("remplissage");
+        return $this->render('artmath/suite_carre.html.twig', [
+            'fichier' => $fichier,
+            'nb_carres' => $nb_carres,
+            'amp_rot' => $amp_rot,
+            'taille' => $taille,
+            'remplissage' => $remplissage,
+        ]);
+    }
+
+    /**
      * @Route("/calculer_koch", name="calculer_koch")
      */
     public function calculer_koch(Request $request): Response
@@ -125,6 +144,37 @@ class ArtmathController extends AbstractController
                 'amp_rot' => $amp_rot,
                 'nb_col' => $nb_col,
                 'nb_lignes' => $nb_lignes,
+                'taille' => $taille,
+                'remplissage' => $remplissage,
+            ]);
+        else {
+            // On a appuyé sur imprimer
+            return $this->render('artmath/imprimer.html.twig', [
+                'fichier' => $out,
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/calculer_suite_carre ", name="calculer_suite_carre")
+     */
+    public function calculer_suite_carre(Request $request): Response
+    {
+        // Récupère les paramètres issus du formulaire (on indique le champ name)
+        $decalage = $request -> request -> get("decalage") ;
+        $nb_carre = $request -> request -> get("nb_carre") ;
+        $taille = $request -> request -> get("taille");
+        $remplissage = $request -> request -> get("remplissage");
+        // Pour les boutons : si appui contenu champ value sinon NULL
+        $calculer  = $request -> request -> get("calculer");
+        $imprimer  = $request -> request -> get("imprimer");    
+        $out = $this->create_pyprocess("nees_carre.py", $taille, $remplissage, $nb_carre, $decalage);
+        // A t'on appuyé sur calculer ?
+        if ($calculer!=NULL)
+            return $this->redirectToRoute('app_nee_carre', [
+                'fichier' => $out,
+                'decalage' => $decalage,
+                'nb_carre' => $nb_carre,
                 'taille' => $taille,
                 'remplissage' => $remplissage,
             ]);
