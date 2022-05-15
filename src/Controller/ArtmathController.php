@@ -43,9 +43,10 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/koch", name="app_koch")
      */
-    public function koch(Request $request, string $fichier='', string $dimension='0'): Response
+    public function koch(Request $request): Response
     {
-        $routeParameters = $request->query->get('fichier');
+        $fichier = $request->query->get('fichier');
+        $dimension = $request->query->get('dimension');
         dump($routeParameters);
         return $this->render('artmath/koch.html.twig', [
             'fichier' => $fichier,
