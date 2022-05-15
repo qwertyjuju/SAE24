@@ -89,7 +89,7 @@ class ArtmathController extends AbstractController
         return $this->render('artmath/suite_carre.html.twig', [
             'fichier' => $fichier,
             'nb_carres' => $nb_carres,
-            'amp_rot' => $amp_rot,
+            'decalage' => $decalage,
             'taille' => $taille,
             'remplissage' => $remplissage,
         ]);
