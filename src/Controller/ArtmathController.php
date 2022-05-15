@@ -171,7 +171,7 @@ class ArtmathController extends AbstractController
         $out = $this->create_pyprocess("suite_carres.py", $taille, $remplissage, $nb_carre, $decalage);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
-            return $this->redirectToRoute('app_nee_carre', [
+            return $this->redirectToRoute('app_suite_carre', [
                 'fichier' => $out,
                 'decalage' => $decalage,
                 'nb_carre' => $nb_carre,
