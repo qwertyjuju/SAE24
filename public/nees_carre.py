@@ -80,7 +80,7 @@ for i in range(nbcolonnes):
          pygame.draw.polygon(screen,couleur,((x1,y1),(x2,y2),(x3,y3),(x4,y4)),rempli)
 
 # Enregistre la figure
-fichier='reponse.png'
+fichier='nee_carre.png'
 pygame.image.save(screen,fichier)
 
 # Ecrit le nom du fichier pour celui qui appelle ce programme
