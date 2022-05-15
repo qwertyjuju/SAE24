@@ -43,10 +43,11 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/koch", name="app_koch")
      */
-    public function koch(): Response
+    public function koch($fichier='', $dimension='0'): Response
     {
         return $this->render('artmath/koch.html.twig', [
-            'fichier' => '',
+            'fichier' => $fichier,
+            'dimension' => $dimension,
         ]);
     }
     
@@ -73,8 +74,9 @@ class ArtmathController extends AbstractController
         $out = $this->create_pyprocess("koch.py", $dimension);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
-            return $this->render('artmath/koch.html.twig', [
+            return $this->redirectToRoute('app_koch', [
                 'fichier' => $out,
+                'dimension' => $dimension,
             ]);
         else {
             // On a appuyé sur imprimer
