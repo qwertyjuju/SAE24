@@ -91,7 +91,10 @@ class __TwigTemplate_24d49b0020ec65be1ee416e95cd54bb8b31e9fef47721bee4f8282ef5ec
     <form method=\"post\" action=\"/calculer_koch\">
         <div>
             <label for=\"Dimension\" class=\"form-label\">Dimension</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"6\" step=\"1\" id=\"dimension\" name=\"dimension\">
+                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"6\" step=\"1\" value =\"";
+        // line 12
+        echo twig_escape_filter($this->env, (isset($context["dimension"]) || array_key_exists("dimension", $context) ? $context["dimension"] : (function () { throw new RuntimeError('Variable "dimension" does not exist.', 12, $this->source); })()), "html", null, true);
+        echo "\" id=\"dimension\" name=\"dimension\">
         </div>
         <div>
             <button type=\"submit\" class=\"btn btn-primary\" name=\"calculer\" value=\"1\">Calculer</button>
@@ -126,7 +129,7 @@ class __TwigTemplate_24d49b0020ec65be1ee416e95cd54bb8b31e9fef47721bee4f8282ef5ec
 
     public function getDebugInfo()
     {
-        return array (  105 => 21,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  108 => 21,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -142,7 +145,7 @@ class __TwigTemplate_24d49b0020ec65be1ee416e95cd54bb8b31e9fef47721bee4f8282ef5ec
     <form method=\"post\" action=\"/calculer_koch\">
         <div>
             <label for=\"Dimension\" class=\"form-label\">Dimension</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"6\" step=\"1\" id=\"dimension\" name=\"dimension\">
+                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"6\" step=\"1\" value =\"{{dimension}}\" id=\"dimension\" name=\"dimension\">
         </div>
         <div>
             <button type=\"submit\" class=\"btn btn-primary\" name=\"calculer\" value=\"1\">Calculer</button>
