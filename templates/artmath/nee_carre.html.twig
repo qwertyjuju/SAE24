@@ -9,17 +9,17 @@
     <form method="post" action="/calculer_nee_carre">
         <div>
             <label for="staticTaille" class="form-label">Taille</label>
-                <input type="range" class="form-range" min="0" max="4" value="0" step="1" id="staticTaille" name="taille">
+                <input type="range" class="form-range" min="0" max="4" value="0" step="1" value="{{taille}}" id="staticTaille" name="taille">
             <label for="staticRemplissage" class="form-label">Remplissage</label>
-                <input type="range" class="form-range" min="0" max="4" value="0" step="1" id="staticRemplissage" name="remplissage">
+                <input type="range" class="form-range" min="0" max="4" value="0" step="1" value="{{remplissage}}" id="staticRemplissage" name="remplissage">
             <label for="staticAmp_hasard" class="form-label">Amplitude hasard</label>
-                <input type="range" class="form-range" min="0" max="4" step="1" id="staticAmp_hasard" name="amp_hasard">
+                <input type="range" class="form-range" min="0" max="4" step="1" value="{{amp_hasard}}" id="staticAmp_hasard" name="amp_hasard">
             <label for="staticAmp_rot" class="form-label">Amplitude rotation</label>
-                <input type="range" class="form-range" min="0" max="5000" step="1" id="staticAmp_rot" name="amp_rot">
+                <input type="range" class="form-range" min="0" max="5000" step="1" value="{{amp_rot}}" id="staticAmp_rot" name="amp_rot">
             <label for="staticNb_col" class="form-label">Nombre colonnes</label>
-                <input type="range" class="form-range" min="0" max="100" step="1" id="staticNb_col" name="nb_col">
+                <input type="range" class="form-range" min="0" max="100" step="1" value="{{nb_col}}" id="staticNb_col" name="nb_col">
             <label for="staticNb_lignes" class="form-label">Nombre lignes</label>
-                <input type="range" class="form-range" min="0" max="100" step="1" id="staticNb_lignes" name="nb_lignes">
+                <input type="range" class="form-range" min="0" max="100" step="1" value="{{nb_lignes}}" id="staticNb_lignes" name="nb_lignes">
         </div>
         <div>
             <button type="submit" class="btn btn-primary" name="calculer" value="1">Calculer</button>

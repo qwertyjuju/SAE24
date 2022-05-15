@@ -58,8 +58,21 @@ class ArtmathController extends AbstractController
      */
     public function nee_carre(): Response
     {
+        $fichier = $request->query->get('fichier');
+        $amp_hasard = $request -> query -> get("amp_hasard") ;
+        $amp_rot = $request -> query -> get("amp_rot") ;
+        $nb_col = $request -> query -> get("nb_col") ;
+        $nb_lignes = $request -> query -> get("nb_lignes") ;
+        $taille = $request -> query -> get("taille");
+        $remplissage = $request -> query -> get("remplissage");
         return $this->render('artmath/nee_carre.html.twig', [
-            'fichier' => '',
+            'fichier' => $fichier,
+            'amp_hasard' => $amp_hasard,
+            'amp_rot' => $amp_rot,
+            'nb_col' => $nb_col,
+            'nb_lignes' => $nb_lignes,
+            'taille' => $taille,
+            'remplissage' => $remplissage,
         ]);
     }
 
@@ -106,8 +119,14 @@ class ArtmathController extends AbstractController
         $out = $this->create_pyprocess("nees_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes, $taille, $remplissage);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
-            return $this->render('artmath/nee_carre.html.twig', [
+            return $this->redirectToRoute('app_nee_carre', [
                 'fichier' => $out,
+                'amp_hasard' => $amp_hasard,
+                'amp_rot' => $amp_rot,
+                'nb_col' => $nb_col,
+                'nb_lignes' => $nb_lignes,
+                'taille' => $taille,
+                'remplissage' => $remplissage,
             ]);
         else {
             // On a appuyé sur imprimer
