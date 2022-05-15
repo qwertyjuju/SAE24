@@ -94,10 +94,12 @@ class ArtmathController extends AbstractController
         $amp_rot = $request -> request -> get("amp_rot") ;
         $nb_col = $request -> request -> get("nb_col") ;
         $nb_lignes = $request -> request -> get("nb_lignes") ;
+        $taille = $request -> request -> get("taille");
+        $remplissage = $request -> request -> get("remplissage");
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
         $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("nees_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes);
+        $out = $this->create_pyprocess("nees_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes, $taille, $remplissage);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->render('artmath/nee_carre.html.twig', [
