@@ -43,7 +43,7 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/koch", name="app_koch")
      */
-    public function koch($fichier='', $dimension='0'): Response
+    public function koch(string $fichier='', string $dimension='0'): Response
     {
         return $this->render('artmath/koch.html.twig', [
             'fichier' => $fichier,
