@@ -56,7 +56,7 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/nee_carre", name="app_nee_carre")
      */
-    public function nee_carre(): Response
+    public function nee_carre(Request $request): Response
     {
         $fichier = $request->query->get('fichier');
         $amp_hasard = $request -> query -> get("amp_hasard") ;
