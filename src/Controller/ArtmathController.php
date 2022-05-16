@@ -162,7 +162,7 @@ class ArtmathController extends AbstractController
     {
         // Récupère les paramètres issus du formulaire (on indique le champ name)
         $decalage = $request -> request -> get("decalage") ;
-        $nb_carre = $request -> request -> get("nb_carre") ;
+        $nb_carres = $request -> request -> get("nb_carres") ;
         $taille = $request -> request -> get("taille");
         $remplissage = $request -> request -> get("remplissage");
         // Pour les boutons : si appui contenu champ value sinon NULL
@@ -174,7 +174,7 @@ class ArtmathController extends AbstractController
             return $this->redirectToRoute('app_suite_carre', [
                 'fichier' => $out,
                 'decalage' => $decalage,
-                'nb_carre' => $nb_carre,
+                'nb_carres' => $nb_carres,
                 'taille' => $taille,
                 'remplissage' => $remplissage,
             ]);
