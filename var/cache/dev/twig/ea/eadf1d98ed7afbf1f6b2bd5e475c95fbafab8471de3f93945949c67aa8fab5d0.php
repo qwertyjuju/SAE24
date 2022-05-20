@@ -101,22 +101,22 @@ class __TwigTemplate_b040b59f1e4dacaed669edcb7e8dae2fd74c53cfc5ada0877f11497fc5c
         echo twig_escape_filter($this->env, (isset($context["remplissage"]) || array_key_exists("remplissage", $context) ? $context["remplissage"] : (function () { throw new RuntimeError('Variable "remplissage" does not exist.', 14, $this->source); })()), "html", null, true);
         echo "\" id=\"staticRemplissage\" name=\"remplissage\">
             <label for=\"staticAmp_hasard\" class=\"form-label\">Amplitude hasard</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"4\" step=\"1\" value=\"";
+                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"1\" step=\"0.1\" value=\"";
         // line 16
         echo twig_escape_filter($this->env, (isset($context["amp_hasard"]) || array_key_exists("amp_hasard", $context) ? $context["amp_hasard"] : (function () { throw new RuntimeError('Variable "amp_hasard" does not exist.', 16, $this->source); })()), "html", null, true);
         echo "\" id=\"staticAmp_hasard\" name=\"amp_hasard\">
             <label for=\"staticAmp_rot\" class=\"form-label\">Amplitude rotation</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"5000\" step=\"1\" value=\"";
+                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"1\" step=\"0.001\" value=\"";
         // line 18
         echo twig_escape_filter($this->env, (isset($context["amp_rot"]) || array_key_exists("amp_rot", $context) ? $context["amp_rot"] : (function () { throw new RuntimeError('Variable "amp_rot" does not exist.', 18, $this->source); })()), "html", null, true);
         echo "\" id=\"staticAmp_rot\" name=\"amp_rot\">
             <label for=\"staticNb_col\" class=\"form-label\">Nombre colonnes</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"100\" step=\"1\" value=\"";
+                <input type=\"range\" class=\"form-range\" min=\"1\" max=\"10\" step=\"1\" value=\"";
         // line 20
         echo twig_escape_filter($this->env, (isset($context["nb_col"]) || array_key_exists("nb_col", $context) ? $context["nb_col"] : (function () { throw new RuntimeError('Variable "nb_col" does not exist.', 20, $this->source); })()), "html", null, true);
         echo "\" id=\"staticNb_col\" name=\"nb_col\">
             <label for=\"staticNb_lignes\" class=\"form-label\">Nombre lignes</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"100\" step=\"1\" value=\"";
+                <input type=\"range\" class=\"form-range\" min=\"1\" max=\"10\" step=\"1\" value=\"";
         // line 22
         echo twig_escape_filter($this->env, (isset($context["nb_lignes"]) || array_key_exists("nb_lignes", $context) ? $context["nb_lignes"] : (function () { throw new RuntimeError('Variable "nb_lignes" does not exist.', 22, $this->source); })()), "html", null, true);
         echo "\" id=\"staticNb_lignes\" name=\"nb_lignes\">
@@ -174,13 +174,13 @@ class __TwigTemplate_b040b59f1e4dacaed669edcb7e8dae2fd74c53cfc5ada0877f11497fc5c
             <label for=\"staticRemplissage\" class=\"form-label\">Remplissage</label>
                 <input type=\"range\" class=\"form-range\" min=\"1\" max=\"200\" step=\"1\" value=\"{{remplissage}}\" id=\"staticRemplissage\" name=\"remplissage\">
             <label for=\"staticAmp_hasard\" class=\"form-label\">Amplitude hasard</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"4\" step=\"1\" value=\"{{amp_hasard}}\" id=\"staticAmp_hasard\" name=\"amp_hasard\">
+                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"1\" step=\"0.1\" value=\"{{amp_hasard}}\" id=\"staticAmp_hasard\" name=\"amp_hasard\">
             <label for=\"staticAmp_rot\" class=\"form-label\">Amplitude rotation</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"5000\" step=\"1\" value=\"{{amp_rot}}\" id=\"staticAmp_rot\" name=\"amp_rot\">
+                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"1\" step=\"0.001\" value=\"{{amp_rot}}\" id=\"staticAmp_rot\" name=\"amp_rot\">
             <label for=\"staticNb_col\" class=\"form-label\">Nombre colonnes</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"100\" step=\"1\" value=\"{{nb_col}}\" id=\"staticNb_col\" name=\"nb_col\">
+                <input type=\"range\" class=\"form-range\" min=\"1\" max=\"10\" step=\"1\" value=\"{{nb_col}}\" id=\"staticNb_col\" name=\"nb_col\">
             <label for=\"staticNb_lignes\" class=\"form-label\">Nombre lignes</label>
-                <input type=\"range\" class=\"form-range\" min=\"0\" max=\"100\" step=\"1\" value=\"{{nb_lignes}}\" id=\"staticNb_lignes\" name=\"nb_lignes\">
+                <input type=\"range\" class=\"form-range\" min=\"1\" max=\"10\" step=\"1\" value=\"{{nb_lignes}}\" id=\"staticNb_lignes\" name=\"nb_lignes\">
         </div>
         <div>
             <button type=\"submit\" class=\"btn btn-primary\" name=\"calculer\" value=\"1\">Calculer</button>

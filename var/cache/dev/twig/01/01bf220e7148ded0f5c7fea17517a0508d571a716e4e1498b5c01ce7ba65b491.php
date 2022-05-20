@@ -84,7 +84,7 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
                 <a class=\"nav-link\" href=\"/nee_carre\">Nee carree</a>
                 </li>
                 <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">A propos</a>
+                <a class=\"nav-link\" href=\"/suite_carre\">Suite carre</a>
                 </li>
                 <li class=\"nav-item dropdown\">
                 <a class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown</a>
@@ -254,7 +254,7 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
                 <a class=\"nav-link\" href=\"/nee_carre\">Nee carree</a>
                 </li>
                 <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">A propos</a>
+                <a class=\"nav-link\" href=\"/suite_carre\">Suite carre</a>
                 </li>
                 <li class=\"nav-item dropdown\">
                 <a class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown</a>
