@@ -46,6 +46,7 @@ dimension=int(sys.argv[1]) # Premier paramètre : dimension que l'on convertit e
 
 # Dessine l
 fig=plt.figure()
+plt.axis('off')
 motif(fig,dimension,0,0,1,0)
 
 # Enregistre la figure
