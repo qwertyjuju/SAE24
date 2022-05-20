@@ -86,7 +86,9 @@ class __TwigTemplate_cdcdaabcbf356bd6673a585f735bd30adfa4a99d4bb8dcc37a623c4516b
 
         // line 6
         echo "<div>
-    <h1>Bienvenue</h1>
+    <h1>Bienvenue sur le site de l'atelier d'art de Roanne</h1>
+    <p>Sur ce site vous retrouverez differentes oeuvres d'arts générées à partir de plusieurs paramètres.
+    </p>
 </div>
 ";
         
@@ -120,7 +122,9 @@ class __TwigTemplate_cdcdaabcbf356bd6673a585f735bd30adfa4a99d4bb8dcc37a623c4516b
 
 {% block body %}
 <div>
-    <h1>Bienvenue</h1>
+    <h1>Bienvenue sur le site de l'atelier d'art de Roanne</h1>
+    <p>Sur ce site vous retrouverez differentes oeuvres d'arts générées à partir de plusieurs paramètres.
+    </p>
 </div>
 {% endblock %}
 ", "artmath/index.html.twig", "/var/www/artmath/templates/artmath/index.html.twig");
