@@ -57,26 +57,23 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
         ";
         // line 8
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 14
+        // line 16
         echo "
         ";
-        // line 15
-        $this->displayBlock('javascripts', $context, $blocks);
         // line 17
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 19
         echo "    </head>
     <body>
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
         <div class=\"container-fluid\">
-            <a class=\"navbar-brand\" href=\"#\">Navbar</a>
+            <a class=\"navbar-brand\" href=\"/\">Menu</a>
             <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarColor03\" aria-controls=\"navbarColor03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
             <span class=\"navbar-toggler-icon\"></span>
             </button>
 
             <div class=\"collapse navbar-collapse\" id=\"navbarColor03\">
             <ul class=\"navbar-nav me-auto\">
-                <li class=\"nav-item\">
-                <a class=\"nav-link active\" href=\"/\">Menu</a>
-                </li>
                 <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"/koch\">Koch</a>
                 </li>
@@ -86,30 +83,45 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
                 <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"/suite_carre\">Suite carre</a>
                 </li>
-                <li class=\"nav-item dropdown\">
-                <a class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown</a>
-                <div class=\"dropdown-menu\">
-                    <a class=\"dropdown-item\" href=\"#\">Action</a>
-                    <a class=\"dropdown-item\" href=\"#\">Another action</a>
-                    <a class=\"dropdown-item\" href=\"#\">Something else here</a>
-                    <div class=\"dropdown-divider\"></div>
-                    <a class=\"dropdown-item\" href=\"#\">Separated link</a>
-                </div>
-                </li>
             </ul>
-            <form class=\"d-flex\">
-                <input class=\"form-control me-sm-2\" type=\"text\" placeholder=\"Search\">
-                <button class=\"btn btn-secondary my-2 my-sm-0\" type=\"submit\">Search</button>
-            </form>
-            </div>
         </div>
     </nav>
-
-
-        ";
-        // line 60
+    ";
+        // line 42
         $this->displayBlock('body', $context, $blocks);
-        // line 61
+        // line 43
+        echo "    <footer class=\"bg-secondary\">
+        <div class=\"row\">
+            <div class=\"col-6\">
+                <h3>Réseaux</h3>
+                <a href=\"https://github.com/qwertyjuju\" class=\"fa fa-github font-32\"></a>
+                <a href=\"https://www.linkedin.com/in/julien-andreoli-73974517b/\" class=\"fa fa-linkedin font-32\"></a>
+            </div>
+            <div class=\"col-6\">
+                <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">
+                    <img class=\"align-right\" alt=\"Licence Creative Commons\" style=\"border-width:0\" src=\"img/creative-commons.png\">
+                </a><br />
+                Ce(tte) œuvre est mise à disposition selon les termes de la'|trans <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"> Licence Creative Commons Attribution - Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>..
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src=\"js/jquery.min.js\"></script> 
+    <script src=\"js/bootstrap.bundle.min.js\"></script>
+    <script src=\"js/prism.js\" data-manual></script>
+    <script src=\"js/custom.js\"></script>
+    ";
+        // line 64
+        echo "    ";
+        // line 65
+        echo "    ";
+        // line 66
+        echo "    ";
+        // line 67
+        echo "    ";
+        // line 68
+        echo "    ";
+        // line 69
         echo "    </body>
 </html>
 ";
@@ -157,7 +169,9 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
         // line 11
         echo "            ";
         // line 12
-        echo "            <link href=\"https://bootswatch.com/5/sketchy/bootstrap.min.css\" rel=\"stylesheet\">
+        echo "            <link href=\"css/bootstrap.css\" rel=\"stylesheet\">
+            <link href=\"css/font-awesome.css\" rel=\"stylesheet\">
+            <link href=\"css/csssite.css\" rel=\"stylesheet\">
         ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -167,7 +181,7 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
 
     }
 
-    // line 15
+    // line 17
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -177,7 +191,7 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 16
+        // line 18
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -187,7 +201,7 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
 
     }
 
-    // line 60
+    // line 42
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -212,7 +226,7 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
 
     public function getDebugInfo()
     {
-        return array (  191 => 60,  181 => 16,  171 => 15,  160 => 12,  158 => 11,  156 => 10,  154 => 9,  144 => 8,  125 => 5,  113 => 61,  111 => 60,  66 => 17,  64 => 15,  61 => 14,  59 => 8,  53 => 5,  47 => 1,);
+        return array (  205 => 42,  195 => 18,  185 => 17,  172 => 12,  170 => 11,  168 => 10,  166 => 9,  156 => 8,  137 => 5,  125 => 69,  123 => 68,  121 => 67,  119 => 66,  117 => 65,  115 => 64,  93 => 43,  91 => 42,  66 => 19,  64 => 17,  61 => 16,  59 => 8,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -228,7 +242,9 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
             {###########################################}
             {# Utilise le style sketchy de bootswatch  #}
             {###########################################}
-            <link href=\"https://bootswatch.com/5/sketchy/bootstrap.min.css\" rel=\"stylesheet\">
+            <link href=\"css/bootstrap.css\" rel=\"stylesheet\">
+            <link href=\"css/font-awesome.css\" rel=\"stylesheet\">
+            <link href=\"css/csssite.css\" rel=\"stylesheet\">
         {% endblock %}
 
         {% block javascripts %}
@@ -237,16 +253,13 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
     <body>
     <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
         <div class=\"container-fluid\">
-            <a class=\"navbar-brand\" href=\"#\">Navbar</a>
+            <a class=\"navbar-brand\" href=\"/\">Menu</a>
             <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarColor03\" aria-controls=\"navbarColor03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
             <span class=\"navbar-toggler-icon\"></span>
             </button>
 
             <div class=\"collapse navbar-collapse\" id=\"navbarColor03\">
             <ul class=\"navbar-nav me-auto\">
-                <li class=\"nav-item\">
-                <a class=\"nav-link active\" href=\"/\">Menu</a>
-                </li>
                 <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"/koch\">Koch</a>
                 </li>
@@ -256,27 +269,36 @@ class __TwigTemplate_e0c04923964f94dc2b812c704f095b83acb54b22363eece985d43048218
                 <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"/suite_carre\">Suite carre</a>
                 </li>
-                <li class=\"nav-item dropdown\">
-                <a class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown</a>
-                <div class=\"dropdown-menu\">
-                    <a class=\"dropdown-item\" href=\"#\">Action</a>
-                    <a class=\"dropdown-item\" href=\"#\">Another action</a>
-                    <a class=\"dropdown-item\" href=\"#\">Something else here</a>
-                    <div class=\"dropdown-divider\"></div>
-                    <a class=\"dropdown-item\" href=\"#\">Separated link</a>
-                </div>
-                </li>
             </ul>
-            <form class=\"d-flex\">
-                <input class=\"form-control me-sm-2\" type=\"text\" placeholder=\"Search\">
-                <button class=\"btn btn-secondary my-2 my-sm-0\" type=\"submit\">Search</button>
-            </form>
-            </div>
         </div>
     </nav>
-
-
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
+    <footer class=\"bg-secondary\">
+        <div class=\"row\">
+            <div class=\"col-6\">
+                <h3>Réseaux</h3>
+                <a href=\"https://github.com/qwertyjuju\" class=\"fa fa-github font-32\"></a>
+                <a href=\"https://www.linkedin.com/in/julien-andreoli-73974517b/\" class=\"fa fa-linkedin font-32\"></a>
+            </div>
+            <div class=\"col-6\">
+                <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">
+                    <img class=\"align-right\" alt=\"Licence Creative Commons\" style=\"border-width:0\" src=\"img/creative-commons.png\">
+                </a><br />
+                Ce(tte) œuvre est mise à disposition selon les termes de la'|trans <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"> Licence Creative Commons Attribution - Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>..
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src=\"js/jquery.min.js\"></script> 
+    <script src=\"js/bootstrap.bundle.min.js\"></script>
+    <script src=\"js/prism.js\" data-manual></script>
+    <script src=\"js/custom.js\"></script>
+    {###########################################}
+    {# <script src=\"{{ asset('js/jquery.min.js') }}\"></script> #}
+    {# <script src=\"{{ asset('js/bootstrap.bundle.min.js') }}\"></script> #}
+    {# <script src=\"{{ asset('js/prism.js') }}\" data-manual></script> #}
+    {#  <script src=\"{{ asset('js/custom.js') }}\"></script> #}
+    {###########################################}
     </body>
 </html>
 ", "base.html.twig", "/var/www/artmath/templates/base.html.twig");
