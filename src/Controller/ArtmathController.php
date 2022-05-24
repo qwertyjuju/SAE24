@@ -51,6 +51,16 @@ class ArtmathController extends AbstractController
     }
 
     /**
+     * @Route("/nee_carre", name="nee_carre")
+     */
+    public function nee_carre(): Response
+    {
+        return $this->render('artmath/nee_carre.html.twig', [
+            'fichier' => '',
+        ]);
+    }
+
+    /**
      * @Route("/calculer", name="calculer")
      */
     public function calculer(Request $request): Response
@@ -63,10 +73,48 @@ class ArtmathController extends AbstractController
 
 
         // Oui : Appelle le script Python koch.py qui se trouve dans le répertoire /public
-        $process = new Process(['python3','koch.py',$dimension]);
+        $process = new Process(['python','koch.py',$dimension]);
         $process -> run();
         // Récupère la valeur de retour renvoyé par le script python
         $fichier=$process->getOutput();
+
+        // Retourne un message si l'éxécution c'est mal passée
+        if (!$process->isSuccessful())
+            return new Response ("Erreur lors de l'éxécution du script Python :<br>".$process->getErrorOutput());    
+
+        // A t'on appuyé sur calculer ?
+        if ($calculer!=NULL)
+            return $this->render('artmath/index.html.twig', [
+                'fichier' => $fichier,
+            ]);
+        else {
+            // On a appuyé sur imprimer
+            return $this->render('artmath/imprimer.html.twig', [
+                'fichier' => $fichier,
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/calculer_nee_carre", name="calculer_nee_carre")
+     */
+    public function calculer_nee_carre(Request $request): Response
+    {
+        // Récupère les paramètres issus du formulaire (on indique le champ name)
+        $amp_hasard = $request -> request -> get("amp_hasard") ;
+        $amp_rot = $request -> request -> get("amp_rot") ;
+        $nb_col = $request -> request -> get("nb_col") ;
+        $nb_lignes = $request -> request -> get("nb_lignes") ;
+        // Pour les boutons : si appui contenu champ value sinon NULL
+        $calculer  = $request -> request -> get("calculer");
+        $imprimer  = $request -> request -> get("imprimer");
+
+
+        // Oui : Appelle le script Python koch.py qui se trouve dans le répertoire /public
+        $process = new Process(['python','nees_carre.py', $amp_hasard, $amp_rot, $nb_col, $nb_lignes]);
+        $process -> run();
+        // Récupère la valeur de retour renvoyé par le script python
+        $fichier='reponse.png';
 
         // Retourne un message si l'éxécution c'est mal passée
         if (!$process->isSuccessful())
