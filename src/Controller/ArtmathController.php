@@ -73,7 +73,7 @@ class ArtmathController extends AbstractController
 
 
         // Oui : Appelle le script Python koch.py qui se trouve dans le répertoire /public
-        $process = new Process(['python','koch.py',$dimension]);
+        $process = new Process(['python3','koch.py',$dimension]);
         $process -> run();
         // Récupère la valeur de retour renvoyé par le script python
         $fichier=$process->getOutput();
