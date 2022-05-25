@@ -187,17 +187,12 @@ class ArtmathController extends AbstractController
     }
 
     public function create_pyprocess(...$args){
-        // Appelle le script Python passer en premier argument qui se trouve dans le répertoire /public
         array_unshift($args,'python3');
         $process = new Process($args);
         $process -> run();
-        // Récupère la valeur de retour renvoyé par le script python
         $output=$process->getOutput();
         if (!$process->isSuccessful())
-            throw new ProcessException("Erreur lors de l'éxécution du script Python :<br>".$process->getErrorOutput());
+            throw new Exception("Erreur lors de l'éxécution du script Python :<br>".$process->getErrorOutput());
         return $output;
     }
 }
-
-
-class ProcessException extends Exception {}
