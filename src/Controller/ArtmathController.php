@@ -41,6 +41,14 @@ class ArtmathController extends AbstractController
     }
 
     /**
+     * @Route("/cr", name="app_cr")
+     */
+    public function cr(): Response
+    {
+        return $this->render('artmath/cr.html.twig');
+    }
+
+    /**
      * @Route("/koch", name="app_koch")
      */
     public function koch(Request $request): Response
