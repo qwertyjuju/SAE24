@@ -205,6 +205,37 @@ class ArtmathController extends AbstractController
         }
     }
 
+    /**
+     * @Route("/calculer_oeuvre ", name="calculer_oeuvre")
+     */
+    public function calculer_oeuvre(Request $request): Response
+    {
+        // Récupère les paramètres issus du formulaire (on indique le champ name)
+        $taille = $request -> request -> get("taille") ;
+        $nb_curves = $request -> request -> get("nb_curves") ;
+        $nb_groups = $request -> request -> get("nb_groups");
+        $amp = $request -> request -> get("amp");
+        // Pour les boutons : si appui contenu champ value sinon NULL
+        $calculer  = $request -> request -> get("calculer");
+        $imprimer  = $request -> request -> get("imprimer");    
+        $out = $this->create_pyprocess("suite_carres.py", $taille, $nb_curves, $nb_groups, $amp);
+        // A t'on appuyé sur calculer ?
+        if ($calculer!=NULL)
+            return $this->redirectToRoute('app_suite_carre', [
+                'fichier' => $out,
+                'taille' => $taille,
+                'nb_curves' => $nb_curves,
+                'nb_groups' => $nb_groups,
+                'amp' => $amp,
+            ]);
+        else {
+            // On a appuyé sur imprimer
+            return $this->render('artmath/imprimer.html.twig', [
+                'fichier' => $out,
+            ]);
+        }
+    }
+
     public function create_pyprocess(...$args){
         array_unshift($args,'python3');
         $process = new Process($args);
@@ -213,5 +244,5 @@ class ArtmathController extends AbstractController
         if (!$process->isSuccessful())
             throw new Exception("Erreur lors de l'éxécution du script Python :<br>".$process->getErrorOutput());
         return $output;
-    }
+    } 
 }
