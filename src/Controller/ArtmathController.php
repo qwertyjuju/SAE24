@@ -102,6 +102,17 @@ class ArtmathController extends AbstractController
             'remplissage' => $remplissage,
         ]);
     }
+    
+    /**
+     * @Route("/oeuvre_perso", name="app_oeuvre_perso")
+     */
+    public function oeuvre_perso(Request $request): Response
+    {
+        $fichier = $request->query->get('fichier');
+        return $this->render('artmath/oeuvre_perso.html.twig', [
+            'fichier' => $fichier,
+        ]);
+    }
 
     /**
      * @Route("/calculer_koch", name="calculer_koch")
@@ -135,7 +146,7 @@ class ArtmathController extends AbstractController
     {
         // Récupère les paramètres issus du formulaire (on indique le champ name)
         $amp_hasard = $request -> request -> get("amp_hasard") ;
-        $amp_rot = $request -> request -> get("amp_rot") ;
+        $amp_rot = $request -> request -> get("amp_rot");
         $nb_col = $request -> request -> get("nb_col") ;
         $nb_lignes = $request -> request -> get("nb_lignes") ;
         $taille = $request -> request -> get("taille");
