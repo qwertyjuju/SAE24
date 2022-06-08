@@ -223,7 +223,7 @@ class ArtmathController extends AbstractController
         $nb_curves = $request -> request -> get("nb_curves") ;
         $nb_groups = $request -> request -> get("nb_groups");
         $amp = $request -> request -> get("amp");
-        dump($amp);
+        dump($taille, $nb_curves, $nb_groups, $amp);
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
         $imprimer  = $request -> request -> get("imprimer");    
