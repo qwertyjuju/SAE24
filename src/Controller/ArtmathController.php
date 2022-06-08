@@ -230,7 +230,7 @@ class ArtmathController extends AbstractController
         $out = $this->create_pyprocess("oeuvre.py", $taille, $nb_curves, $nb_groups, $amp);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
-            return $this->redirectToRoute('app_suite_carre', [
+            return $this->redirectToRoute('app_oeuvre_perso', [
                 'fichier' => $out,
                 'taille' => $taille,
                 'nb_curves' => $nb_curves,
