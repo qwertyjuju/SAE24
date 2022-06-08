@@ -45,7 +45,7 @@ def draw_curve(surface, a, b, color, dx, dy, direction=-1, reverse=0):
 
 
 pg.init()
-mainsurface = pg.Surface((size, size))
+mainsurface = pg.surface.Surface((size, size))
 mainsurface.fill((0, 0, 0))
 draw_curve_groups(mainsurface, nb_curves, nb_groups)
 filename = "oeuvre1.png"
