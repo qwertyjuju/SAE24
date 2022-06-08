@@ -9,7 +9,7 @@ import sys
 size = int(sys.argv[1])
 nb_curves = int(sys.argv[2])
 nb_groups = int(sys.argv[3])
-rand_a = 1 if "on" else 0
+rand_a = 1 if sys.argv[4] == "on" else 0
 
 # calcul centre de l'image
 center = size/2
