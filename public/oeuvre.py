@@ -19,7 +19,7 @@ def draw_curve_groups(screen, nb_curves, nb_groups):
     rotate = 0
     while nb_curves > 0:
         a = 1 if not rand_a else rd.uniform(0,1)
-        color = [rd.randint(0, 255), rd.randint(0, 255), rd.randint(0, 255), rd.randint(60, 127)]
+        color = [rd.randint(0, 255), rd.randint(0, 255), rd.randint(0, 255)]
         dx, dy = rd.randint(0, 20), rd.randint(0, 50)
         surface = draw_curve_group(int(nb/2), color, a, dx, dy, rotate)
         screen.blit(surface, (0,0))
@@ -28,7 +28,7 @@ def draw_curve_groups(screen, nb_curves, nb_groups):
 
 
 def draw_curve_group(nb, color, a, dx, dy, reverse):
-    surface = pg.Surface((size, size), pg.SRCALPHA)
+    surface = pg.Surface((size, size))
     b = rd.uniform(a, 5.0)
     for i in range(int(nb)):
         draw_curve(surface, a, b, color, dx, dy, 1, reverse)
