@@ -30,7 +30,6 @@ def draw_curve_groups(screen, nb_curves, nb_groups):
 def draw_curve_group(nb, color, a, dx, dy, reverse):
     surface = pg.Surface((size, size), pg.SRCALPHA)
     b = rd.uniform(a, 5.0)
-    print(color)
     for i in range(int(nb)):
         draw_curve(surface, a, b, color, dx, dy, 1, reverse)
         draw_curve(surface, a, b, color, dx, dy, -1, reverse)
@@ -51,3 +50,4 @@ mainsurface.fill((0, 0, 0))
 draw_curve_groups(mainsurface, nb_curves, nb_groups)
 filename = "oeuvre1.png"
 pg.image.save(mainsurface, filename)
+print(filename)
