@@ -114,6 +114,7 @@ class ArtmathController extends AbstractController
         $nb_groups = $request -> query -> get("nb_groups");
         $amp = $request -> query -> get("amp");
         $ecart = $request -> query -> get("ecart");
+        $couleur = $request -> query -> get("couleur");
         return $this->render('artmath/oeuvre_perso.html.twig', [
             'fichier' => $fichier,
             'taille' => $taille,
@@ -121,6 +122,7 @@ class ArtmathController extends AbstractController
             'nb_groups' => $nb_groups,
             'amp' => $amp,
             'ecart'=>$ecart,
+            'coueleur'=>$couleur,
         ]);
     }
 
@@ -226,10 +228,11 @@ class ArtmathController extends AbstractController
         $nb_groups = $request -> request -> get("nb_groups");
         $amp = $request -> request -> get("amp");
         $ecart = $request -> request -> get("ecart");
+        $couleur = $request -> request -> get("couleur");
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
         $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("oeuvre.py", $taille, $nb_curves, $nb_groups, $ecart, $amp);
+        $out = $this->create_pyprocess("oeuvre.py", $taille, $nb_curves, $nb_groups, $ecart, $amp, $couleur);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->redirectToRoute('app_oeuvre_perso', [
@@ -239,6 +242,7 @@ class ArtmathController extends AbstractController
                 'nb_groups' => $nb_groups,
                 'amp' => $amp,
                 'ecart'=>$ecart,
+                'coueleur'=>$couleur,
             ]);
         else {
             // On a appuyé sur imprimer
