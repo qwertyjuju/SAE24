@@ -13,7 +13,7 @@ ecart = float(sys.argv[4]) if float(sys.argv[4]) > 0 else 0.001
 if nb_curves<nb_groups:
     nb_curves = nb_groups
 rand_a = 1 if sys.argv[5] == "on" else 0
-background = pg.color(sys.argv[6])
+background = pg.Color(sys.argv[6])
 
 # calcul centre de l'image
 center = size/2
