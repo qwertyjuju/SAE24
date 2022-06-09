@@ -113,6 +113,7 @@ class ArtmathController extends AbstractController
         $nb_curves = $request -> query -> get("nb_curves") ;
         $nb_groups = $request -> query -> get("nb_groups");
         $amp = $request -> query -> get("amp");
+        $ecart = $request -> query -> get("ecart");
         return $this->render('artmath/oeuvre_perso.html.twig', [
             'fichier' => $fichier,
             'taille' => $taille,
