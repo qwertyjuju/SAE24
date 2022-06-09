@@ -9,10 +9,10 @@ import sys
 size = int(sys.argv[1])
 nb_curves = int(sys.argv[2])
 nb_groups = int(sys.argv[3])
-#ecart = float(sys.argv[4])
+ecart = float(sys.argv[4])
 if nb_curves<nb_groups:
     nb_curves = nb_groups
-rand_a = 1 if sys.argv[4] == "on" else 0
+rand_a = 1 if sys.argv[5] == "on" else 0
 
 # calcul centre de l'image
 center = size/2
@@ -36,7 +36,7 @@ def draw_curve_group(nb, color, a, dx, dy, reverse):
     for i in range(int(nb)+1):
         draw_curve(surface, a, b, color, dx, dy, 1, reverse)
         draw_curve(surface, a, b, color, dx, dy, -1, reverse)
-        b += 0.01
+        b += ecart
     return surface
 
 

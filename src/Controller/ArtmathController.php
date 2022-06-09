@@ -119,6 +119,7 @@ class ArtmathController extends AbstractController
             'nb_curves' => $nb_curves,
             'nb_groups' => $nb_groups,
             'amp' => $amp,
+            'ecart'=>$ecart,
         ]);
     }
 
@@ -223,10 +224,11 @@ class ArtmathController extends AbstractController
         $nb_curves = $request -> request -> get("nb_curves") ;
         $nb_groups = $request -> request -> get("nb_groups");
         $amp = $request -> request -> get("amp");
+        $ecart = $request -> request -> get("ecart");
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
         $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("oeuvre.py", $taille, $nb_curves, $nb_groups, $amp);
+        $out = $this->create_pyprocess("oeuvre.py", $taille, $nb_curves, $nb_groups, $ecart, $amp);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->redirectToRoute('app_oeuvre_perso', [
@@ -235,6 +237,7 @@ class ArtmathController extends AbstractController
                 'nb_curves' => $nb_curves,
                 'nb_groups' => $nb_groups,
                 'amp' => $amp,
+                'ecart'=>$ecart,
             ]);
         else {
             // On a appuyé sur imprimer
