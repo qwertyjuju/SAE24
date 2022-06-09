@@ -122,7 +122,7 @@ class ArtmathController extends AbstractController
             'nb_groups' => $nb_groups,
             'amp' => $amp,
             'ecart'=>$ecart,
-            'coueleur'=>$couleur,
+            'couleur'=>$couleur,
         ]);
     }
 
@@ -242,7 +242,7 @@ class ArtmathController extends AbstractController
                 'nb_groups' => $nb_groups,
                 'amp' => $amp,
                 'ecart'=>$ecart,
-                'coueleur'=>$couleur,
+                'couleur'=>$couleur,
             ]);
         else {
             // On a appuyé sur imprimer
