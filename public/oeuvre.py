@@ -30,7 +30,7 @@ def draw_curve_groups(screen, nb_curves, nb_groups):
 def draw_curve_group(nb, color, a, dx, dy, reverse):
     surface = pg.Surface((size, size), pg.SRCALPHA)
     b = rd.uniform(a, 5.0)
-    for i in range(int(nb)):
+    for i in range(int(nb)+1):
         draw_curve(surface, a, b, color, dx, dy, 1, reverse)
         draw_curve(surface, a, b, color, dx, dy, -1, reverse)
         b += 0.1
