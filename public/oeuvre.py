@@ -46,7 +46,6 @@ def draw_curve(surface, a, b, color, dx, dy, direction=-1, reverse=0):
     points = list(zip((xarray * size)+dx, yarray+dy if not reverse else np.flip(yarray)+dy))
     pg.draw.aalines(surface, color, False, points)
 
-
 pg.init()
 mainsurface = pg.surface.Surface((size, size))
 mainsurface.fill((0, 0, 0))
