@@ -41,7 +41,7 @@ def draw_curve_group(nb, color, a, dx, dy, reverse):
 
 
 def draw_curve(surface, a, b, color, dx, dy, direction=-1, reverse=0):
-    xarray = np.arange(dx, size) / size-dx
+    xarray = np.arange(size) / size
     yarray = direction * (((xarray ** a) * ((1 - xarray) ** b)) * size) + center
     points = list(zip((xarray * size)+dx, yarray+dy if not reverse else np.flip(yarray)+dy))
     pg.draw.aalines(surface, color, False, points)
