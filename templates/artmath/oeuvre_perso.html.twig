@@ -37,9 +37,10 @@ var input_texts={}
 function init(){
     var inputs = document.getElementsByTagName("input")
     for (input of inputs){
-        console.log(input)
+        label = input.previousElementSibling
+        input_texts[input.id]=label.innerHtml
     }
-
+    console.log(input_texts)
 }
 function update_value(element){
     console.log(element)
