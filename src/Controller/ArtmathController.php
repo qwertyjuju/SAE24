@@ -134,7 +134,7 @@ class ArtmathController extends AbstractController
         $fichier = $request->query->get('fichier');
         $taille = $request -> query -> get("taille") ;
         $nb_pol = $request -> query -> get("nb_pol") ;
-        return $this->render('artmath/oeuvre_perso.html.twig', [
+        return $this->render('artmath/oeuvre_perso2.html.twig', [
             'fichier' => $fichier,
             'taille' => $taille,
             'nb_pol' => $nb_pol,
