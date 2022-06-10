@@ -270,7 +270,7 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/calculer_oeuvre2 ", name="calculer_oeuvre2")
      */
-    public function calculer_oeuvre(Request $request): Response
+    public function calculer_oeuvre2(Request $request): Response
     {
         // Récupère les paramètres issus du formulaire (on indique le champ name)
         $taille = $request -> request -> get("taille") ;
