@@ -11,17 +11,17 @@
             <label for="staticTaille" class="form-label">Taille</label>
                 <input type="range" class="form-range" min="500" max="2000" step="1" value="{{taille}}" onchange="update_value(this)"  id="staticTaille" name="taille">
             <label for="staticnb_curves" class="form-label">Nombre de courbes</label>
-                <input type="range" class="form-range" min="100" max="10000" step="1" value="{{nb_curves}}" id="staticnb_curves" name="nb_curves">
+                <input type="range" class="form-range" min="100" max="10000" step="1" value="{{nb_curves}}" onchange="update_value(this)" id="staticnb_curves" name="nb_curves">
             <label for="staticnb_groups" class="form-label">nombre de groupes</label>
-                <input type="range" class="form-range" min="1" max="100" step="1" value="{{nb_groups}}" id="staticnb_groups" name="nb_groups">
+                <input type="range" class="form-range" min="1" max="100" step="1" value="{{nb_groups}}" onchange="update_value(this)" id="staticnb_groups" name="nb_groups">
             <label for="staticEcart" class="form-label" >Ecart</label>
-                <input type="range" class="form-range" min="0.001" max="1" step="0.001" value="{{ecart}}" id="staticEcart" name="ecart">
+                <input type="range" class="form-range" min="0.001" max="1" step="0.001" value="{{ecart}}" onchange="update_value(this)" id="staticEcart" name="ecart">
             <label for="staticAmp" class="form-label">Amplification courbe</label>
-                <input type="checkbox" id="staticAmp" id="staticAmp" name="amp">
+                <input type="checkbox" id="staticAmp" id="staticAmp" onchange="update_value(this)" name="amp">
         </div>
         <div>
             <label for="statiCouleur" class="form-label">Couleur</label>
-                <input type="color" id="staticCouleur" value="{{couleur}}" name="couleur">
+                <input type="color" id="staticCouleur" onchange="update_value(this)" value="{{couleur}}" name="couleur">
         </div>
         <div>
             <button type="submit" class="btn btn-primary" name="calculer" value="1">Calculer</button>
