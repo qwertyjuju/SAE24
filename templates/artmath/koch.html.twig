@@ -9,7 +9,7 @@
     <form method="post" action="/calculer_koch">
         <div>
             <label for="Dimension" class="form-label">Dimension</label>
-                <input type="range" class="form-range" min="0" max="6" step="1" value ="{{dimension}}" id="dimension" name="dimension">
+                <input type="range" class="form-range" min="0" max="6" step="1" value ="{{dimension}}" onchange="update_value(this)" id="dimension" name="dimension">
         </div>
         <div>
             <button type="submit" class="btn btn-primary" name="calculer" value="1">Calculer</button>
