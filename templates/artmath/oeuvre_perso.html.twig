@@ -39,7 +39,7 @@ function init(){
     for (input of inputs){
         console.log(input)
         label = input.previousElementSibling
-        input_texts[input.id]=label.innerHtml
+        input_texts[input.id]=label.innerHTML
     }
     console.log(input_texts)
 }
