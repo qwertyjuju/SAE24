@@ -32,20 +32,4 @@
     <h1> Résultat : </h1>
     <img src="{{fichier}}" width="100%">
 </div>
-<script>
-var input_texts={}
-function init(){
-    var inputs = document.getElementsByTagName("input")
-    for (input of inputs){
-        var label = input.previousElementSibling
-        input_texts[input.id]=label.innerHTML
-        update_value(input)
-    }
-}
-function update_value(element){
-    var label = element.previousElementSibling
-    label.innerHTML = input_texts[element.id]+": "+element.value
-}
-init()
-</script>
 {% endblock %}
