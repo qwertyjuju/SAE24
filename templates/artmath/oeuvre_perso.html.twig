@@ -42,7 +42,7 @@ function init(){
     }
 }
 function update_value(element){
-    var label = input.previousElementSibling
+    var label = element.previousElementSibling
     label.innerHTML = input_texts[element.id]+": "+element.value
 }
 init()
