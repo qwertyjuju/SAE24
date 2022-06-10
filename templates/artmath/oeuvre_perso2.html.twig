@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Art mathématique{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Paramètres :</h1>
+    <!-- C'est grâce à l'attribut name que l'on peut récupérer la valeur associée dans symfony -->
+    <form method="post" action="/calculer_oeuvre2">
+        <div>
+            <label for="staticTaille" class="form-label">Taille</label>
+                <input type="range" class="form-range" min="500" max="2000" step="1" value="{{taille}}" oninput="update_value(this)"  id="staticTaille" name="taille">
+            <label for="staticnb_pol" class="form-label">Nombre de polygones par lignes</label>
+                <input type="range" class="form-range" min="5" max="500" step="1" value="{{nb_pol}}" oninput="update_value(this)" id="staticnb_pol" name="nb_pol">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" name="calculer" value="1">Calculer</button>
+            <button type="submit" class="btn btn-danger" name="imprimer" value="1">Imprimer</button>
+        </div>
+    </form>
+
+    <h1> Résultat : </h1>
+    <img src="{{fichier}}" width="100%">
+</div>
+{% endblock %}

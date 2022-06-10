@@ -127,6 +127,21 @@ class ArtmathController extends AbstractController
     }
 
     /**
+     * @Route("/oeuvre_perso2", name="app_oeuvre_perso2")
+     */
+    public function oeuvre_perso2(Request $request): Response
+    {
+        $fichier = $request->query->get('fichier');
+        $taille = $request -> query -> get("taille") ;
+        $nb_pol = $request -> query -> get("nb_pol") ;
+        return $this->render('artmath/oeuvre_perso.html.twig', [
+            'fichier' => $fichier,
+            'taille' => $taille,
+            'nb_pol' => $nb_pol,
+        ]);
+    }
+
+    /**
      * @Route("/calculer_koch", name="calculer_koch")
      */
     public function calculer_koch(Request $request): Response
@@ -243,6 +258,33 @@ class ArtmathController extends AbstractController
                 'amp' => $amp,
                 'ecart'=>$ecart,
                 'couleur'=>$couleur,
+            ]);
+        else {
+            // On a appuyé sur imprimer
+            return $this->render('artmath/imprimer.html.twig', [
+                'fichier' => $out,
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/calculer_oeuvre2 ", name="calculer_oeuvre2")
+     */
+    public function calculer_oeuvre(Request $request): Response
+    {
+        // Récupère les paramètres issus du formulaire (on indique le champ name)
+        $taille = $request -> request -> get("taille") ;
+        $nb_pol = $request -> request -> get("nb_pol") ;
+        // Pour les boutons : si appui contenu champ value sinon NULL
+        $calculer  = $request -> request -> get("calculer");
+        $imprimer  = $request -> request -> get("imprimer");    
+        $out = $this->create_pyprocess("oeuvre2.py", $taille, $nb_pol);
+        // A t'on appuyé sur calculer ?
+        if ($calculer!=NULL)
+            return $this->redirectToRoute('app_oeuvre_perso', [
+                'fichier' => $out,
+                'taille' => $taille,
+                'nb_pol' => $nb_pol,
             ]);
         else {
             // On a appuyé sur imprimer
