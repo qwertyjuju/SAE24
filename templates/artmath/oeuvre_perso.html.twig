@@ -39,6 +39,7 @@ function init(){
     for (input of inputs){
         var label = input.previousElementSibling
         input_texts[input.id]=label.innerHTML
+        update_value(input)
     }
 }
 function update_value(element){
