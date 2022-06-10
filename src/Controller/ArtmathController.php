@@ -281,7 +281,7 @@ class ArtmathController extends AbstractController
         $out = $this->create_pyprocess("oeuvre2.py", $taille, $nb_pol);
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
-            return $this->redirectToRoute('app_oeuvre_perso', [
+            return $this->redirectToRoute('app_oeuvre_perso2', [
                 'fichier' => $out,
                 'taille' => $taille,
                 'nb_pol' => $nb_pol,
