@@ -9,7 +9,7 @@
     <form method="post" action="/calculer_oeuvre">
         <div>
             <label for="staticTaille" class="form-label">Taille</label>
-                <input type="range" class="form-range" min="500" max="2000" step="1" value="{{taille}}" onchange="update_value(this)"  id="staticTaille" name="taille">
+                <input type="range" class="form-range" min="500" max="2000" step="1" value="{{taille}}" oninput="update_value(this)"  id="staticTaille" name="taille">
             <label for="staticnb_curves" class="form-label">Nombre de courbes</label>
                 <input type="range" class="form-range" min="100" max="10000" step="1" value="{{nb_curves}}" onchange="update_value(this)" id="staticnb_curves" name="nb_curves">
             <label for="staticnb_groups" class="form-label">nombre de groupes</label>
