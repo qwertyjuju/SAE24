@@ -14,7 +14,7 @@ def calc_coor(max_s, dx, dy):
     return x, y, r* np.cos(alpha)
 
 size = int(sys.argv[1])
-nb_pol = int(sys.argv[2])
+nb_pol = int(sys.argv[2])+1
 marginx = 10
 marginy = 10
 
