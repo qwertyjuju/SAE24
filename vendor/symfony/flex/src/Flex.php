@@ -248,7 +248,6 @@ class Flex implements PluginInterface, EventSubscriberInterface
             }
 
             if (isset(self::$aliasResolveCommands[$command])) {
-                // early resolve for BC with Composer 1.0
                 if ($input->hasArgument('packages')) {
                     $input->setArgument('packages', $resolver->resolve($input->getArgument('packages'), self::$aliasResolveCommands[$command]));
                 }
@@ -279,9 +278,6 @@ class Flex implements PluginInterface, EventSubscriberInterface
                 $this->populateRepoCacheDir();
             }
 
-            $app->add(new Command\RequireCommand($resolver, \Closure::fromCallable([$this, 'updateComposerLock'])));
-            $app->add(new Command\UpdateCommand($resolver));
-            $app->add(new Command\RemoveCommand($resolver));
             $app->add(new Command\UnpackCommand($resolver));
             $app->add(new Command\RecipesCommand($this, $this->lock, $rfs));
             $app->add(new Command\InstallRecipesCommand($this, $this->options->get('root-dir'), $this->options->get('runtime')['dotenv_path'] ?? '.env'));
@@ -306,6 +302,14 @@ class Flex implements PluginInterface, EventSubscriberInterface
         foreach ($backtrace as $trace) {
             if (isset($trace['object']) && $trace['object'] instanceof Installer) {
                 $this->installer = $trace['object']->setSuggestedPackagesReporter(new SuggestedPackagesReporter(new NullIO()));
+
+                $updateAllowList = \Closure::bind(function () {
+                    return $this->updateWhitelist ?? $this->updateAllowList ?? null;
+                }, $this->installer, $this->installer)();
+
+                if (['php' => 0] === $updateAllowList) {
+                    $this->dryRun = true; // prevent recipes from being uninstalled when removing a pack
+                }
             }
 
             if (isset($trace['object']) && $trace['object'] instanceof GlobalCommand) {
@@ -378,7 +382,7 @@ class Flex implements PluginInterface, EventSubscriberInterface
         }, null, Transaction::class)();
 
         foreach ($transation->getOperations() as $operation) {
-            if ($this->shouldRecordOperation($operation, $event->isDevMode(), $event->getComposer())) {
+            if (!$operation instanceof UninstallOperation && $this->shouldRecordOperation($operation, $event->isDevMode(), $event->getComposer())) {
                 $this->operations[] = $operation;
             }
         }
@@ -754,6 +758,7 @@ class Flex implements PluginInterface, EventSubscriberInterface
         $recipes = [
             'symfony/framework-bundle' => null,
         ];
+        $packRecipes = [];
         $metaRecipes = [];
 
         foreach ($operations as $operation) {
@@ -803,16 +808,18 @@ class Flex implements PluginInterface, EventSubscriberInterface
             }
 
             if (isset($manifests[$name])) {
-                if ('metapackage' === $package->getType()) {
-                    $metaRecipes[$name] = new Recipe($package, $name, $job, $manifests[$name], $locks[$name] ?? []);
-                } elseif ('symfony/flex' === $name) {
-                    $flexRecipe = [$name => new Recipe($package, $name, $job, $manifests[$name], $locks[$name] ?? [])];
-                } else {
-                    $recipes[$name] = new Recipe($package, $name, $job, $manifests[$name], $locks[$name] ?? []);
-                }
-            }
+                $recipe = new Recipe($package, $name, $job, $manifests[$name], $locks[$name] ?? []);
 
-            if (!isset($manifests[$name])) {
+                if ('symfony-pack' === $package->getType()) {
+                    $packRecipes[$name] = $recipe;
+                } elseif ('metapackage' === $package->getType()) {
+                    $metaRecipes[$name] = $recipe;
+                } elseif ('symfony/flex' === $name) {
+                    $flexRecipe = [$name => $recipe];
+                } else {
+                    $recipes[$name] = $recipe;
+                }
+            } else {
                 $bundles = [];
 
                 if (null === $devPackages) {
@@ -830,11 +837,15 @@ class Flex implements PluginInterface, EventSubscriberInterface
                         'manifest' => ['bundles' => $bundles],
                     ];
                     $recipes[$name] = new Recipe($package, $name, $job, $manifest);
+
+                    if ($operation instanceof InstallOperation) {
+                        $this->lock->set($name, ['version' => $package->getPrettyVersion()]);
+                    }
                 }
             }
         }
 
-        return array_merge($flexRecipe, $metaRecipes, array_filter($recipes));
+        return array_merge($flexRecipe, $packRecipes, $metaRecipes, array_filter($recipes));
     }
 
     public function truncatePackages(PrePoolCreateEvent $event)
@@ -1046,6 +1057,7 @@ class Flex implements PluginInterface, EventSubscriberInterface
         }
 
         $events = [
+            PackageEvents::POST_PACKAGE_UNINSTALL => 'record',
             ScriptEvents::POST_CREATE_PROJECT_CMD => 'configureProject',
             ScriptEvents::POST_INSTALL_CMD => 'install',
             ScriptEvents::PRE_UPDATE_CMD => 'configureInstaller',
@@ -1057,7 +1069,6 @@ class Flex implements PluginInterface, EventSubscriberInterface
             $events += [
                 PackageEvents::POST_PACKAGE_INSTALL => [['recordFlexInstall'], ['record']],
                 PackageEvents::POST_PACKAGE_UPDATE => [['record'], ['enableThanksReminder']],
-                PackageEvents::POST_PACKAGE_UNINSTALL => 'record',
                 InstallerEvents::PRE_DEPENDENCIES_SOLVING => [['populateProvidersCacheDir', \PHP_INT_MAX]],
                 InstallerEvents::POST_DEPENDENCIES_SOLVING => [['populateFilesCacheDir', \PHP_INT_MAX]],
                 PackageEvents::PRE_PACKAGE_INSTALL => [['populateFilesCacheDir', ~\PHP_INT_MAX]],
