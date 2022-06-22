@@ -20,30 +20,41 @@ use function count;
 final class ExecutionResult
 {
     /** @var Query[] */
-    private array $sql = [];
+    private $sql = [];
 
     /**
      * Seconds
+     *
+     * @var float|null
      */
-    private ?float $time = null;
+    private $time;
 
-    private ?float $memory = null;
+    /** @var float|null */
+    private $memory;
 
-    private bool $skipped = false;
+    /** @var bool */
+    private $skipped = false;
 
-    private bool $error = false;
+    /** @var bool */
+    private $error = false;
 
-    private ?Throwable $exception = null;
+    /** @var Throwable|null */
+    private $exception;
 
-    private ?DateTimeImmutable $executedAt = null;
+    /** @var DateTimeImmutable|null */
+    private $executedAt;
 
-    private int $state;
+    /** @var int */
+    private $state;
 
-    private ?Schema $toSchema = null;
+    /** @var Schema|null */
+    private $toSchema;
 
-    private Version $version;
+    /** @var Version */
+    private $version;
 
-    private string $direction;
+    /** @var string */
+    private $direction;
 
     public function __construct(Version $version, string $direction = Direction::UP, ?DateTimeImmutable $executedAt = null)
     {

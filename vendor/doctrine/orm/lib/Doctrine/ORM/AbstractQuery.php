@@ -36,7 +36,6 @@ use function is_array;
 use function is_numeric;
 use function is_object;
 use function is_scalar;
-use function is_string;
 use function iterator_count;
 use function iterator_to_array;
 use function ksort;
@@ -283,7 +282,7 @@ abstract class AbstractQuery
      * The returned SQL syntax depends on the connection driver that is used
      * by this query object at the time of this method call.
      *
-     * @return list<string>|string SQL query
+     * @return string SQL query
      */
     abstract public function getSQL();
 
@@ -354,6 +353,7 @@ abstract class AbstractQuery
      */
     public function setParameters($parameters)
     {
+        // BC compatibility with 2.3-
         if (is_array($parameters)) {
             /** @psalm-var ArrayCollection<int, Parameter> $parameterCollection */
             $parameterCollection = new ArrayCollection();
@@ -401,8 +401,8 @@ abstract class AbstractQuery
      *
      * @param mixed $value
      *
-     * @return mixed[]|string|int|float|bool|object|null
-     * @psalm-return array|scalar|object|null
+     * @return mixed[]|string|int|float|bool
+     * @psalm-return array|scalar
      *
      * @throws ORMInvalidArgumentException
      */
@@ -1302,8 +1302,7 @@ abstract class AbstractQuery
             $parameters[$parameter->getName()] = $this->processParameterValue($parameter->getValue());
         }
 
-        $sql = $this->getSQL();
-        assert(is_string($sql));
+        $sql                    = $this->getSQL();
         $queryCacheProfile      = $this->getHydrationCacheProfile();
         $hints                  = $this->getHints();
         $hints['hydrationMode'] = $this->getHydrationMode();
@@ -1375,8 +1374,7 @@ abstract class AbstractQuery
      */
     protected function getHash()
     {
-        $query = $this->getSQL();
-        assert(is_string($query));
+        $query  = $this->getSQL();
         $hints  = $this->getHints();
         $params = array_map(function (Parameter $parameter) {
             $value = $parameter->getValue();

@@ -22,7 +22,8 @@ use function usort;
  */
 final class OrmSchemaProvider implements SchemaProvider
 {
-    private EntityManagerInterface $entityManager;
+    /** @var EntityManagerInterface */
+    private $entityManager;
 
     public function __construct(EntityManagerInterface $em)
     {

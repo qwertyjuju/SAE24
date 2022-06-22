@@ -1,11 +1,6 @@
 CHANGELOG
 =========
 
-6.1
----
-
- * Add option `ignoreFile` to configure a file that lists deprecation messages to ignore
-
 6.0
 ---
 

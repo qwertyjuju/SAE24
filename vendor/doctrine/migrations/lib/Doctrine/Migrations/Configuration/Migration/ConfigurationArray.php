@@ -19,7 +19,7 @@ use function is_callable;
 final class ConfigurationArray implements ConfigurationLoader
 {
     /** @var array<string,mixed> */
-    private array $configurations;
+    private $configurations;
 
     /**
      * @param array<string,mixed> $configurations

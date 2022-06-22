@@ -13,7 +13,6 @@ namespace Symfony\Flex\Command;
 
 use Composer\Command\BaseCommand;
 use Composer\Downloader\TransportException;
-use Composer\Package\Package;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -62,25 +61,19 @@ class RecipesCommand extends BaseCommand
         // Inspect one or all packages
         $package = $input->getArgument('package');
         if (null !== $package) {
-            $packages = [strtolower($package)];
+            $packages = [0 => ['name' => strtolower($package)]];
         } else {
             $locker = $this->getComposer()->getLocker();
             $lockData = $locker->getLockData();
 
             // Merge all packages installed
-            $packages = array_column(array_merge($lockData['packages'], $lockData['packages-dev']), 'name');
-            $packages = array_unique(array_merge($packages, array_keys($this->symfonyLock->all())));
+            $packages = array_merge($lockData['packages'], $lockData['packages-dev']);
         }
 
         $operations = [];
-        foreach ($packages as $name) {
-            $pkg = $installedRepo->findPackage($name, '*');
-
-            if (!$pkg && $this->symfonyLock->has($name)) {
-                $pkgVersion = $this->symfonyLock->get($name)['version'];
-                $pkg = new Package($name, $pkgVersion, $pkgVersion);
-            } elseif (!$pkg) {
-                $this->getIO()->writeError(sprintf('<error>Package %s is not installed</error>', $name));
+        foreach ($packages as $value) {
+            if (null === $pkg = $installedRepo->findPackage($value['name'], '*')) {
+                $this->getIO()->writeError(sprintf('<error>Package %s is not installed</error>', $value['name']));
 
                 continue;
             }

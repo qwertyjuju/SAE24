@@ -108,10 +108,7 @@ class AttributeDriver extends CompatibilityAnnotationDriver
      */
     public function loadMetadataForClass($className, PersistenceClassMetadata $metadata): void
     {
-        $reflectionClass = $metadata->getReflectionClass()
-            // this happens when running annotation driver in combination with
-            // static reflection services. This is not the nicest fix
-            ?? new ReflectionClass($metadata->name);
+        $reflectionClass = $metadata->getReflectionClass();
 
         $classAttributes = $this->reader->getClassAnnotations($reflectionClass);
 

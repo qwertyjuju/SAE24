@@ -66,28 +66,10 @@ return [[
 '[C]App%5CController%5CArtmathController' => 1,
 'App%5CController%5CArtmathController%23racine' => 2,
 '[C]App%5CController%5CArtmathController%23racine' => 1,
-'App%5CController%5CArtmathController%23cr' => 3,
-'[C]App%5CController%5CArtmathController%23cr' => 1,
-'App%5CController%5CArtmathController%23koch' => 4,
+'App%5CController%5CArtmathController%23koch' => 3,
 '[C]App%5CController%5CArtmathController%23koch' => 1,
-'App%5CController%5CArtmathController%23nee_carre' => 5,
-'[C]App%5CController%5CArtmathController%23nee_carre' => 1,
-'App%5CController%5CArtmathController%23suite_carre' => 6,
-'[C]App%5CController%5CArtmathController%23suite_carre' => 1,
-'App%5CController%5CArtmathController%23oeuvre_perso' => 7,
-'[C]App%5CController%5CArtmathController%23oeuvre_perso' => 1,
-'App%5CController%5CArtmathController%23oeuvre_perso2' => 8,
-'[C]App%5CController%5CArtmathController%23oeuvre_perso2' => 1,
-'App%5CController%5CArtmathController%23calculer_koch' => 9,
+'App%5CController%5CArtmathController%23calculer_koch' => 4,
 '[C]App%5CController%5CArtmathController%23calculer_koch' => 1,
-'App%5CController%5CArtmathController%23calculer_nee_carre' => 10,
-'[C]App%5CController%5CArtmathController%23calculer_nee_carre' => 1,
-'App%5CController%5CArtmathController%23calculer_suite_carre' => 11,
-'[C]App%5CController%5CArtmathController%23calculer_suite_carre' => 1,
-'App%5CController%5CArtmathController%23calculer_oeuvre' => 12,
-'[C]App%5CController%5CArtmathController%23calculer_oeuvre' => 1,
-'App%5CController%5CArtmathController%23calculer_oeuvre2' => 13,
-'[C]App%5CController%5CArtmathController%23calculer_oeuvre2' => 1,
 'App%5CController%5CArtmathController%23create_pyprocess' => 0,
 '[C]App%5CController%5CArtmathController%23create_pyprocess' => 1,
 'Doctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController' => 0,
@@ -638,7 +620,7 @@ return [[
 ], [
 
 0 => [],
-1 => 1655933708,
+1 => 1652390629,
 2 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -670,10 +652,10 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
-                    '/cr',
+                    '/koch',
                 ],
                 'name' => [
-                    'app_cr',
+                    'app_koch',
                 ],
             ],
         ],
@@ -692,208 +674,10 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
-                    '/koch',
-                ],
-                'name' => [
-                    'app_koch',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-5 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/nee_carre',
-                ],
-                'name' => [
-                    'app_nee_carre',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-6 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/suite_carre',
-                ],
-                'name' => [
-                    'app_suite_carre',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-7 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/oeuvre_perso',
-                ],
-                'name' => [
-                    'app_oeuvre_perso',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-8 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/oeuvre_perso2',
-                ],
-                'name' => [
-                    'app_oeuvre_perso2',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-9 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
                     '/calculer_koch',
                 ],
                 'name' => [
                     'calculer_koch',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-10 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/calculer_nee_carre ',
-                ],
-                'name' => [
-                    'calculer_nee_carre',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-11 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/calculer_suite_carre ',
-                ],
-                'name' => [
-                    'calculer_suite_carre',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-12 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/calculer_oeuvre ',
-                ],
-                'name' => [
-                    'calculer_oeuvre',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-13 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/calculer_oeuvre2 ',
-                ],
-                'name' => [
-                    'calculer_oeuvre2',
                 ],
             ],
         ],

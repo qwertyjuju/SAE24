@@ -59,7 +59,6 @@ final class NativeResponse implements ResponseInterface, StreamableInterface
         $this->buffer = fopen('php://temp', 'w+');
 
         $info['user_data'] = $options['user_data'];
-        $info['max_duration'] = $options['max_duration'];
         ++$multi->responseCount;
 
         $this->initializer = static function (self $response) {

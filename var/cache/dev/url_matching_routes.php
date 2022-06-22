@@ -9,17 +9,12 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/' => [[['_route' => 'racine', '_controller' => 'App\\Controller\\ArtmathController::racine'], null, null, null, false, false, null]],
-        '/cr' => [[['_route' => 'app_cr', '_controller' => 'App\\Controller\\ArtmathController::cr'], null, null, null, false, false, null]],
         '/koch' => [[['_route' => 'app_koch', '_controller' => 'App\\Controller\\ArtmathController::koch'], null, null, null, false, false, null]],
         '/nee_carre' => [[['_route' => 'app_nee_carre', '_controller' => 'App\\Controller\\ArtmathController::nee_carre'], null, null, null, false, false, null]],
         '/suite_carre' => [[['_route' => 'app_suite_carre', '_controller' => 'App\\Controller\\ArtmathController::suite_carre'], null, null, null, false, false, null]],
-        '/oeuvre_perso' => [[['_route' => 'app_oeuvre_perso', '_controller' => 'App\\Controller\\ArtmathController::oeuvre_perso'], null, null, null, false, false, null]],
-        '/oeuvre_perso2' => [[['_route' => 'app_oeuvre_perso2', '_controller' => 'App\\Controller\\ArtmathController::oeuvre_perso2'], null, null, null, false, false, null]],
         '/calculer_koch' => [[['_route' => 'calculer_koch', '_controller' => 'App\\Controller\\ArtmathController::calculer_koch'], null, null, null, false, false, null]],
         '/calculer_nee_carre' => [[['_route' => 'calculer_nee_carre', '_controller' => 'App\\Controller\\ArtmathController::calculer_nee_carre'], null, null, null, false, false, null]],
         '/calculer_suite_carre' => [[['_route' => 'calculer_suite_carre', '_controller' => 'App\\Controller\\ArtmathController::calculer_suite_carre'], null, null, null, false, false, null]],
-        '/calculer_oeuvre' => [[['_route' => 'calculer_oeuvre', '_controller' => 'App\\Controller\\ArtmathController::calculer_oeuvre'], null, null, null, false, false, null]],
-        '/calculer_oeuvre2' => [[['_route' => 'calculer_oeuvre2', '_controller' => 'App\\Controller\\ArtmathController::calculer_oeuvre2'], null, null, null, false, false, null]],
         '/_profiler' => [[['_route' => '_profiler_home', '_controller' => 'web_profiler.controller.profiler::homeAction'], null, null, null, true, false, null]],
         '/_profiler/search' => [[['_route' => '_profiler_search', '_controller' => 'web_profiler.controller.profiler::searchAction'], null, null, null, false, false, null]],
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],

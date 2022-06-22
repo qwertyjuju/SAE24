@@ -15,9 +15,11 @@ use Psr\Log\LoggerInterface;
  */
 final class DbalMigrationFactory implements MigrationFactory
 {
-    private Connection $connection;
+    /** @var Connection */
+    private $connection;
 
-    private LoggerInterface $logger;
+    /** @var LoggerInterface */
+    private $logger;
 
     public function __construct(Connection $connection, LoggerInterface $logger)
     {

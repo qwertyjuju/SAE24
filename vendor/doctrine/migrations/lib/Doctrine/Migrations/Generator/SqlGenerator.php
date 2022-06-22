@@ -27,9 +27,11 @@ use function var_export;
  */
 class SqlGenerator
 {
-    private Configuration $configuration;
+    /** @var Configuration */
+    private $configuration;
 
-    private AbstractPlatform $platform;
+    /** @var AbstractPlatform */
+    private $platform;
 
     public function __construct(Configuration $configuration, AbstractPlatform $platform)
     {

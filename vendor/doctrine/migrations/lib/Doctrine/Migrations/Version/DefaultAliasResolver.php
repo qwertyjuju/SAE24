@@ -24,11 +24,14 @@ final class DefaultAliasResolver implements AliasResolver
     private const ALIAS_NEXT    = 'next';
     private const ALIAS_LATEST  = 'latest';
 
-    private MigrationPlanCalculator $migrationPlanCalculator;
+    /** @var MigrationPlanCalculator */
+    private $migrationPlanCalculator;
 
-    private MetadataStorage $metadataStorage;
+    /** @var MetadataStorage */
+    private $metadataStorage;
 
-    private MigrationStatusCalculator $migrationStatusCalculator;
+    /** @var MigrationStatusCalculator */
+    private $migrationStatusCalculator;
 
     public function __construct(
         MigrationPlanCalculator $migrationPlanCalculator,

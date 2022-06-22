@@ -10,9 +10,11 @@ use Doctrine\Persistence\ConnectionRegistry;
 
 final class ConnectionRegistryConnection implements ConnectionLoader
 {
-    private ConnectionRegistry $registry;
+    /** @var ConnectionRegistry */
+    private $registry;
 
-    private ?string $defaultConnectionName = null;
+    /** @var string|null */
+    private $defaultConnectionName;
 
     public static function withSimpleDefault(ConnectionRegistry $registry, ?string $connectionName = null): self
     {

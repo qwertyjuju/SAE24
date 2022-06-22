@@ -18,7 +18,7 @@ use Doctrine\DBAL\Types\Type;
  */
 abstract class AbstractSqlExecutor
 {
-    /** @var list<string>|string */
+    /** @var mixed[]|string */
     protected $_sqlStatements;
 
     /** @var QueryCacheProfile */

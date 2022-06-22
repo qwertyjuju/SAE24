@@ -37,11 +37,6 @@ class Configuration
     private $verboseOutput;
 
     /**
-     * @var string[]
-     */
-    private $ignoreDeprecationPatterns = [];
-
-    /**
      * @var bool
      */
     private $generateBaseline = false;
@@ -65,12 +60,11 @@ class Configuration
      * @param int[]       $thresholds       A hash associating groups to thresholds
      * @param string      $regex            Will be matched against messages, to decide whether to display a stack trace
      * @param bool[]      $verboseOutput    Keyed by groups
-     * @param string      $ignoreFile       The path to the ignore deprecation patterns file
      * @param bool        $generateBaseline Whether to generate or update the baseline file
      * @param string      $baselineFile     The path to the baseline file
      * @param string|null $logFile          The path to the log file
      */
-    private function __construct(array $thresholds = [], $regex = '', $verboseOutput = [], $ignoreFile = '', $generateBaseline = false, $baselineFile = '', $logFile = null)
+    private function __construct(array $thresholds = [], $regex = '', $verboseOutput = [], $generateBaseline = false, $baselineFile = '', $logFile = null)
     {
         $groups = ['total', 'indirect', 'direct', 'self'];
 
@@ -114,25 +108,6 @@ class Configuration
                 throw new \InvalidArgumentException(sprintf('Unsupported verbosity group "%s", expected one of "%s".', $group, implode('", "', array_keys($this->verboseOutput))));
             }
             $this->verboseOutput[$group] = $status;
-        }
-
-        if ($ignoreFile) {
-            if (!is_file($ignoreFile)) {
-                throw new \InvalidArgumentException(sprintf('The ignoreFile "%s" does not exist.', $ignoreFile));
-            }
-            set_error_handler(static function ($t, $m) use ($ignoreFile, &$line) {
-                throw new \RuntimeException(sprintf('Invalid pattern found in "%s" on line "%d"', $ignoreFile, 1 + $line).substr($m, 12));
-            });
-            try {
-                foreach (file($ignoreFile) as $line => $pattern) {
-                    if ('#' !== (trim($pattern)[0] ?? '#')) {
-                        preg_match($pattern, '');
-                        $this->ignoreDeprecationPatterns[] = $pattern;
-                    }
-                }
-            } finally {
-                restore_error_handler();
-            }
         }
 
         if ($generateBaseline && !$baselineFile) {
@@ -188,19 +163,6 @@ class Configuration
         }
 
         return true;
-    }
-
-    public function isIgnoredDeprecation(Deprecation $deprecation): bool
-    {
-        if (!$this->ignoreDeprecationPatterns) {
-            return false;
-        }
-        $result = @preg_filter($this->ignoreDeprecationPatterns, '$0', $deprecation->getMessage());
-        if (\PREG_NO_ERROR !== preg_last_error()) {
-            throw new \RuntimeException(preg_last_error_msg());
-        }
-
-        return (bool) $result;
     }
 
     /**
@@ -304,17 +266,16 @@ class Configuration
     {
         parse_str($serializedConfiguration, $normalizedConfiguration);
         foreach (array_keys($normalizedConfiguration) as $key) {
-            if (!\in_array($key, ['max', 'disabled', 'verbose', 'quiet', 'ignoreFile', 'generateBaseline', 'baselineFile', 'logFile'], true)) {
+            if (!\in_array($key, ['max', 'disabled', 'verbose', 'quiet', 'generateBaseline', 'baselineFile', 'logFile'], true)) {
                 throw new \InvalidArgumentException(sprintf('Unknown configuration option "%s".', $key));
             }
         }
 
         $normalizedConfiguration += [
-            'max' => ['total' => 0],
+            'max' => [],
             'disabled' => false,
             'verbose' => true,
             'quiet' => [],
-            'ignoreFile' => '',
             'generateBaseline' => false,
             'baselineFile' => '',
             'logFile' => null,
@@ -336,10 +297,9 @@ class Configuration
         }
 
         return new self(
-            $normalizedConfiguration['max'],
+            $normalizedConfiguration['max'] ?? [],
             '',
             $verboseOutput,
-            $normalizedConfiguration['ignoreFile'],
             filter_var($normalizedConfiguration['generateBaseline'], \FILTER_VALIDATE_BOOLEAN),
             $normalizedConfiguration['baselineFile'],
             $normalizedConfiguration['logFile']
