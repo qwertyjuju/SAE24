@@ -1,6 +1,7 @@
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import sys
+import uuid
 import random as rd
 import pygame as pg
 from pygame.math import Vector2 as Vec
@@ -10,7 +11,7 @@ taille = int(sys.argv[1])
 remplissage = int(sys.argv[2])
 nb_carres= int(sys.argv[3])
 d = float(sys.argv[4].replace(",", "."))
-
+user = sys.argv[5]
 
 pg.init()
 couleurs = [(0,0,0), (0,128,0), (255, 0, 0), (255, 102, 204), (51, 51, 255), (255, 102, 0), (255, 255, 0),(153, 102, 51)]
@@ -34,9 +35,9 @@ for i in range(nb_carres):
     points[3] = points[3].lerp(saved_p0, d)
     couleur = rd.choice(couleurs)
     pg.draw.polygon(surface, couleur, points, remplissage)
-fichier = "suite_carre.png"
-pg.image.save(surface, fichier)
-print(fichier)
+filename = "suite_carre.png" if not user else f"userfiles/{user}-{uuid.uuid4()}.jpg"
+pg.image.save(surface, filename)
+print(filename)
 
 
 

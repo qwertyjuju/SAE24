@@ -1,32 +1,17 @@
 <?php
 
-/**************************************************************
- * Site symfony : Art Mathématique - courbe de koch           *
- **************************************************************
- * (c) F. BONNARDOT, 28 Février 2022                          *
- * This code is given as is without warranty of any kind.     *
- * In no event shall the authors or copyright holder be liable*
- *    for any claim damages or other liability.               *
- **************************************************************/
-
 namespace App\Controller;
 
-// Inclus par défaut par Symfony
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-// Récupération des données d'un formulaire
 use Symfony\Component\HttpFoundation\Request;
-
-// Exécution d'un process (ici fonction python)
-// Doc : https://symfony.com/doc/current/components/process.html
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
-
-// Pour renvoyer un fichier directement
-use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\Security\Core\Security;
+use App\Entity\File;
 
 class ArtmathController extends AbstractController
 {
@@ -46,6 +31,36 @@ class ArtmathController extends AbstractController
     public function cr(): Response
     {
         return $this->render('artmath/cr.html.twig');
+    }
+
+    /**
+     * @Route("/oeuvressauvees", name="oeuvressauvees")
+     */
+    public function oeuvressauvees(Security $security, EntityManagerInterface $manager): Response
+    {
+        $user = $security->getUser();
+        if($user){
+            $files=$user->getFiles();
+        }
+        else{
+            $files=[];
+        }
+        return $this->render('artmath/oeuvressaved.html.twig',[
+            'files'=> $files,
+        ]);
+    }
+
+    /**
+     * @Route("/delete_img", name="delete_img")
+     */
+    public function delete_img(Security $security, EntityManagerInterface $manager, Request $request): Response
+    {
+        $fichierid = $request->request->get('delete');
+        $fichier = $manager->getRepository(File::class)->find($fichierid);
+        $nomfichier = $fichier->getLoc();
+        dump($nomfichier);
+        unlink($nomfichier);
+        return $this->redirectToRoute('oeuvressauvees');
     }
 
     /**
@@ -144,14 +159,28 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/calculer_koch", name="calculer_koch")
      */
-    public function calculer_koch(Request $request): Response
+    public function calculer_koch(Request $request, Security $security, EntityManagerInterface $manager): Response
     {
         // Récupère les paramètres issus du formulaire (on indique le champ name)
         $dimension = $request -> request -> get("dimension") ;
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
-        $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("koch.py", $dimension);
+        $imprimer  = $request -> request -> get("imprimer");
+        $user = $security->getUser();
+        if ($user){
+            $username = $user->getUsername();
+        }
+        else{
+            $username = "";
+        }    
+        $out = $this->create_pyprocess("koch.py", $dimension, $username);
+        if ($user){
+            $fichier = new File();
+            $fichier->setLoc($out);
+            $fichier->setIduser($user);
+            $manager->persist($fichier);
+            $manager->flush();
+        }
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->redirectToRoute('app_koch', [
@@ -169,7 +198,7 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/calculer_nee_carre ", name="calculer_nee_carre")
      */
-    public function calculer_nee_carre(Request $request): Response
+    public function calculer_nee_carre(Request $request, Security $security, EntityManagerInterface $manager): Response
     {
         // Récupère les paramètres issus du formulaire (on indique le champ name)
         $amp_hasard = $request -> request -> get("amp_hasard") ;
@@ -180,8 +209,22 @@ class ArtmathController extends AbstractController
         $remplissage = $request -> request -> get("remplissage");
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
-        $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("nees_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes, $taille, $remplissage);
+        $imprimer  = $request -> request -> get("imprimer");
+        $user = $security->getUser();
+        if ($user){
+            $username = $user->getUsername();
+        }
+        else{
+            $username = "";
+        }   
+        $out = $this->create_pyprocess("nees_carre.py", $amp_hasard, $amp_rot, $nb_col, $nb_lignes, $taille, $remplissage, $username);
+        if ($user){
+            $fichier = new File();
+            $fichier->setLoc($out);
+            $fichier->setIduser($user);
+            $manager->persist($fichier);
+            $manager->flush();
+        }
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->redirectToRoute('app_nee_carre', [
@@ -204,7 +247,7 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/calculer_suite_carre ", name="calculer_suite_carre")
      */
-    public function calculer_suite_carre(Request $request): Response
+    public function calculer_suite_carre(Request $request, Security $security, EntityManagerInterface $manager): Response
     {
         // Récupère les paramètres issus du formulaire (on indique le champ name)
         $decalage = $request -> request -> get("decalage") ;
@@ -213,8 +256,22 @@ class ArtmathController extends AbstractController
         $remplissage = $request -> request -> get("remplissage");
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
-        $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("suite_carres.py", $taille, $remplissage, $nb_carres, $decalage);
+        $imprimer  = $request -> request -> get("imprimer");
+        $user = $security->getUser();
+        if ($user){
+            $username = $user->getUsername();
+        }
+        else{
+            $username = "";
+        } 
+        $out = $this->create_pyprocess("suite_carres.py", $taille, $remplissage, $nb_carres, $decalage, $username);
+        if ($user){
+            $fichier = new File();
+            $fichier->setLoc($out);
+            $fichier->setIduser($user);
+            $manager->persist($fichier);
+            $manager->flush();
+        }
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->redirectToRoute('app_suite_carre', [
@@ -235,7 +292,7 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/calculer_oeuvre ", name="calculer_oeuvre")
      */
-    public function calculer_oeuvre(Request $request): Response
+    public function calculer_oeuvre(Request $request, Security $security, EntityManagerInterface $manager): Response
     {
         // Récupère les paramètres issus du formulaire (on indique le champ name)
         $taille = $request -> request -> get("taille") ;
@@ -246,8 +303,22 @@ class ArtmathController extends AbstractController
         $couleur = $request -> request -> get("couleur");
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
-        $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("oeuvre.py", $taille, $nb_curves, $nb_groups, $ecart, $amp, $couleur);
+        $imprimer  = $request -> request -> get("imprimer");
+        $user = $security->getUser();
+        if ($user){
+            $username = $user->getUsername();
+        }
+        else{
+            $username = "";
+        }    
+        $out = $this->create_pyprocess("oeuvre.py", $taille, $nb_curves, $nb_groups, $ecart, $amp, $couleur, $username);
+        if ($user){
+            $fichier = new File();
+            $fichier->setLoc($out);
+            $fichier->setIduser($user);
+            $manager->persist($fichier);
+            $manager->flush();
+        }
         // A t'on appuyé sur calculer ?
         if ($calculer!=NULL)
             return $this->redirectToRoute('app_oeuvre_perso', [
@@ -270,16 +341,29 @@ class ArtmathController extends AbstractController
     /**
      * @Route("/calculer_oeuvre2 ", name="calculer_oeuvre2")
      */
-    public function calculer_oeuvre2(Request $request): Response
+    public function calculer_oeuvre2(Request $request, Security $security, EntityManagerInterface $manager): Response
     {
         // Récupère les paramètres issus du formulaire (on indique le champ name)
         $taille = $request -> request -> get("taille") ;
         $nb_pol = $request -> request -> get("nb_pol") ;
         // Pour les boutons : si appui contenu champ value sinon NULL
         $calculer  = $request -> request -> get("calculer");
-        $imprimer  = $request -> request -> get("imprimer");    
-        $out = $this->create_pyprocess("oeuvre2.py", $taille, $nb_pol);
-        // A t'on appuyé sur calculer ?
+        $imprimer  = $request -> request -> get("imprimer");
+        $user = $security->getUser();
+        if ($user){
+            $username = $user->getUsername();
+        }
+        else{
+            $username = "";
+        }
+        $out = $this->create_pyprocess("oeuvre2.py", $taille, $nb_pol, $username);
+        if ($user){
+            $fichier = new File();
+            $fichier->setLoc($out);
+            $fichier->setIduser($user);
+            $manager->persist($fichier);
+            $manager->flush();
+        }
         if ($calculer!=NULL)
             return $this->redirectToRoute('app_oeuvre_perso2', [
                 'fichier' => $out,

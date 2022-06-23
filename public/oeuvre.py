@@ -1,5 +1,6 @@
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+import uuid
 import numpy as np
 import random as rd
 import pygame as pg
@@ -14,6 +15,7 @@ if nb_curves<nb_groups:
     nb_curves = nb_groups
 rand_a = 1 if sys.argv[5] == "on" else 0
 background = pg.Color(sys.argv[6])
+user = sys.argv[7]
 
 # calcul centre de l'image
 center = size/2
@@ -51,6 +53,6 @@ pg.init()
 mainsurface = pg.surface.Surface((size, size))
 mainsurface.fill(background)
 draw_curve_groups(mainsurface, nb_curves, nb_groups)
-filename = "oeuvre1.png"
+filename = "oeuvre1.png" if not user else f"userfiles/{user}-{uuid.uuid4()}.jpg"
 pg.image.save(mainsurface, filename)
 print(filename)

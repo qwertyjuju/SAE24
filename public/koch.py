@@ -21,6 +21,7 @@ In no event shall the authors or copyright holder be liable for any claim damage
 import sys # Pour récupérer les paramètres passés en ligne de commande
 import matplotlib.pyplot as plt
 import math
+import uuid
 
 def motif(fig,dim,x1,y1,x2,y2):
     if dim==0:
@@ -43,6 +44,7 @@ def motif(fig,dim,x1,y1,x2,y2):
         motif(fig,dim-1,xc,yc,x2,y2)
 
 dimension=int(sys.argv[1]) # Premier paramètre : dimension que l'on convertit en entier
+user = sys.argv[2]
 
 # Dessine l
 fig=plt.figure()
@@ -50,7 +52,7 @@ plt.axis('off')
 motif(fig,dimension,0,0,1,0)
 
 # Enregistre la figure
-fichier='koch.svg'
-fig.savefig(fichier)
+filename = 'koch.svg' if not user else f"userfiles/{user}-{uuid.uuid4()}.svg"
+fig.savefig(filename)
 # Ecrit le nom du fichier pour celui qui appelle ce programme
-print (fichier)
+print (filename)

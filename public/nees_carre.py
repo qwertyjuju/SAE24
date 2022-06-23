@@ -18,6 +18,7 @@ In no event shall the authors or copyright holder be liable for any claim damage
 # Attention: il faut un linux avec une interface graphique d'installé
 #   car on utilise sdl, un simple terminal ne marche pas avec pygame.
 import os
+import uuid
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import sys 		# Pour récupérer les paramètres passés en ligne de commande
 from math import *	# Importe toutes les fonctions de math (cos, ...)
@@ -50,6 +51,8 @@ nblignes=int(sys.argv[4])
 taille=int(sys.argv[5]) # Taille d'un carré
 rempli=int(sys.argv[6]) # Remplissage du carré
 
+user = sys.argv[7]
+
 # Taille de la zone pour dessiner
 larg=taille*(nbcolonnes+2)
 haut=taille*(nblignes+2)
@@ -81,7 +84,8 @@ for i in range(nbcolonnes):
 
 # Enregistre la figure
 fichier='nee_carre.png'
-pygame.image.save(screen,fichier)
+filename = 'nee_carre.png' if not user else f"userfiles/{user}-{uuid.uuid4()}.jpg"
+pygame.image.save(screen,filename)
 
 # Ecrit le nom du fichier pour celui qui appelle ce programme
-print (fichier)
+print (filename)

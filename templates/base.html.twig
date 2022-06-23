@@ -18,6 +18,9 @@
         {% endblock %}
     </head>
     <body>
+    {% if app.user %}
+    Bonjour et bienvenue {{app.user.username}}
+    {% endif %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Menu</a>
@@ -45,9 +48,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/cr">compte rendu</a>
                 </li>
+                {% if app.user %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/cr">compte rendu</a>
+                    <a class="nav-link" href="/oeuvressauvees">Mes oeuvres sauvegardées</a>
                 </li>
+                {% endif %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         Connexion/Inscription
@@ -55,6 +60,9 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/register">Inscription</a>
                         <a class="dropdown-item" href="/login">Connexion</a>
+                        {% if app.user %}
+                        <a class="dropdown-item" href="/logout">Deconnexion</a>
+                        {% endif %}
                     </div>
 				</li>
             </ul>

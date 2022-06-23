@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Art mathématique{% endblock %}
+
+{% block body %}
+
+    {% for file in  files %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="{{file.loc}}" width="100%">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <form action ="/delete_img" method ="POST">
+                    <button type="submit" class="btn btn-primary" name="delete" value="{{file.id}}">Supprimer</button>
+                </form>
+                <form action="https://google.com">
+                    <button type="submit" class="btn btn-primary">imprimer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
