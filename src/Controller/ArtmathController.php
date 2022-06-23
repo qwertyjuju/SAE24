@@ -33,6 +33,19 @@ class ArtmathController extends AbstractController
         return $this->render('artmath/cr.html.twig');
     }
 
+    
+    /**
+     * @Route("/imprimer", name="imprimer")
+     */
+    public function imprimer(Request $request): Response
+    {
+        $fichier = $request->request->get('fichier');
+        return $this->render('artmath/imprimer.html.twig',[
+            'fichier'=>$fichier
+        ]);
+    }
+
+
     /**
      * @Route("/oeuvressauvees", name="oeuvressauvees")
      */
@@ -57,9 +70,10 @@ class ArtmathController extends AbstractController
     {
         $fichierid = $request->request->get('delete');
         $fichier = $manager->getRepository(File::class)->find($fichierid);
-        $nomfichier = $fichier->getLoc();
-        dump($nomfichier);
+        $nomfichier = preg_replace( "/\r|\n/", "", $fichier->getLoc());
         unlink($nomfichier);
+        $manager->remove($fichier);
+        $manager->flush();
         return $this->redirectToRoute('oeuvressauvees');
     }
 

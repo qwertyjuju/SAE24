@@ -16,12 +16,11 @@
                 <form action ="/delete_img" method ="POST">
                     <button type="submit" class="btn btn-primary" name="delete" value="{{file.id}}">Supprimer</button>
                 </form>
-                <form action="https://google.com">
-                    <button type="submit" class="btn btn-primary">imprimer</button>
+                <form action="/imprimer" method ="POST">
+                    <button type="submit" class="btn btn-primary" name="fichier" value="{{file.loc}}">imprimer</button>
                 </form>
             </div>
         </div>
     </div>
     {% endfor %}
-
 {% endblock %}
